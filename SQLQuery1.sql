@@ -1,0 +1,1 @@
+﻿Select Username from dbo.[Table] where [Site name] = 'test'
