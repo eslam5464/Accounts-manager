@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace Accounts_manager
 {
@@ -60,6 +61,7 @@ namespace Accounts_manager
 
         private void form_parent_Load(object sender, EventArgs e)
         {
+            new Thread(() => methods.connectDB()).Start();
 
             this.WindowState = Properties.Settings.Default.WindowState;
 
@@ -149,5 +151,6 @@ namespace Accounts_manager
             Properties.Settings.Default.WindowState = this.WindowState;
             Properties.Settings.Default.Save();
         }
+
     }
 }

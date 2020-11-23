@@ -8,6 +8,7 @@ using System.IO;
 using System.Data.OleDb;
 using System.Data;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace Accounts_manager
 {
@@ -16,6 +17,7 @@ namespace Accounts_manager
         public string db_name = "Accounts.accdb", keyFileName = "key.txt", keyFileNameEnc = "key.txt.aes";
         public string folder_location = @Path.GetPathRoot(Environment.SystemDirectory) + @"Accounts manager\Data\";
         public string DBpassword = "";
+        private string connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\Accounts.mdf;Integrated Security=True";
 
         public bool checkFiles()
         {
@@ -161,6 +163,23 @@ namespace Accounts_manager
             //        conn.Close();
             //    }
             //}
+        }
+
+        public void connectDB()
+        {
+            SqlConnection connection;
+
+            connection = new SqlConnection(connetionString);
+            try
+            {
+                connection.Open();
+                Debug.WriteLine("connected to DB");
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         #region security methods
