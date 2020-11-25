@@ -52,7 +52,6 @@ namespace Accounts_manager
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                     connection.Close();
-                    //this.tableTableAdapter.Fill(this.accounts.Table);
                     Debug.WriteLine("ExecuteNonQuery in SqlCommand executed!!" + string.Format("\nsite:{0}\nun:{1}\npw:{2}\nemail:{3}\np:{4}\nq:{5}\nans:{6}\ninfo:{7}\n----",
                         tb_save_siteName.Text, tb_save_username.Text, tb_save_password.Text, tb_save_email.Text, tb_save_phone.Text,
                         tb_save_question.Text, tb_save_answer.Text, tb_save_otherInfo.Text));
@@ -91,56 +90,32 @@ namespace Accounts_manager
             Random r = new Random();
             SqlConnection connection;
             SqlCommand cmd;
-            //string sql = "insert into dbo.[Table]([Site name], Username, Password, Email, Phone, Question, Answer, [Other information], [Time created])" +
-            //    " VALUES( 'test" + i + "', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', GETDATE())";
-
             connection = new SqlConnection(connetionString);
-            SqlDataReader reader;
+            string sql = "insert into dbo.[Table]([Site name], Username, Password, Email, Phone, Question, Answer, [Other information], [Time created])" +
+                " VALUES( 'site " + r.Next() + "', 'user " + r.Next() + "', 'pw " + r.Next() + "', 'email " + r.Next() + "', " + r.Next() +
+                ", 'question " + r.Next() + "', 'test " + r.Next() + "', 'test " + r.Next() + "', getdate())";
 
             try
             {
                 connection.Open();
-
-                //for (int i = 0; i < 5; i++)
-                //{
-                string sql = "insert into dbo.[Table]([Site name], Username, Password, Email, Phone, Question, Answer, [Other information], [Time created])" +
-                " VALUES( 'site " + r.Next() + "', 'user " + r.Next() + "', 'pw " + r.Next() + "', 'email " + r.Next() + "', " + r.Next() + ", 'question " + r.Next() + "', 'test " + r.Next() + "', 'test " + r.Next() + "', getdate())";
                 cmd = new SqlCommand(sql, connection);
                 int x = cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                //}
 
                 connection.Close();
-                //this.tableTableAdapter.Fill(this.accounts.Table);
-                //Debug.WriteLine("ExecuteNonQuery in SqlCommand executed!!" + string.Format("\nsite:{0}\nun:{1}\npw:{2}\nemail:{3}\np:{4}\nq:{5}\nans:{6}\ninfo:{7}\n----",
-                //    tb_save_siteName.Text, tb_save_username.Text, tb_save_password.Text, tb_save_email.Text, tb_save_phone.Text,
-                //    tb_save_question.Text, tb_save_answer.Text, tb_save_otherInfo.Text));
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
 
-            //Random r = new Random();
-            //string query = "insert into dbo.[Table]([Site name], Username, Password, Email, Phone, Question, Answer, [Other information], [Time created])" +
-            //        " VALUES( 'site " + r.Next() + "', 'user " + r.Next() + "', 'pw " + r.Next() + "', 'email " + r.Next() + "', '123', 'question " + r.Next() + "', 'test " + r.Next() + "', 'test " + r.Next() + "', getdate())";
-            //SqlConnection conDataBase = new SqlConnection(connetionString);
-            //SqlCommand cmdDataBase = new SqlCommand(query, conDataBase);
-            //SqlDataReader myReader;
-            //try
-            //{
-            //    conDataBase.Open();
-            //    myReader = cmdDataBase.ExecuteReader();
-            //    while (myReader.Read())
-            //    {
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //}
-
+        private void tb_save_phone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

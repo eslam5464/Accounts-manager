@@ -58,6 +58,7 @@
             this.accounts = new Accounts_manager.Accounts();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableTableAdapter = new Accounts_manager.AccountsTableAdapters.TableTableAdapter();
+            this.btn_deleteAcc = new System.Windows.Forms.Button();
             this.panel_edit.SuspendLayout();
             this.panel_edit_header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accounts)).BeginInit();
@@ -67,6 +68,7 @@
             // panel_edit
             // 
             this.panel_edit.AutoScroll = true;
+            this.panel_edit.Controls.Add(this.btn_deleteAcc);
             this.panel_edit.Controls.Add(this.lbl_viewBy);
             this.panel_edit.Controls.Add(this.lbl_date_created);
             this.panel_edit.Controls.Add(this.lb_edit);
@@ -291,7 +293,7 @@
             this.btn_save_changes.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.btn_save_changes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btn_save_changes.Image = ((System.Drawing.Image)(resources.GetObject("btn_save_changes.Image")));
-            this.btn_save_changes.Location = new System.Drawing.Point(248, 295);
+            this.btn_save_changes.Location = new System.Drawing.Point(228, 295);
             this.btn_save_changes.Name = "btn_save_changes";
             this.btn_save_changes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_save_changes.Size = new System.Drawing.Size(150, 40);
@@ -336,6 +338,28 @@
             // tableTableAdapter
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
+            // 
+            // btn_deleteAcc
+            // 
+            this.btn_deleteAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_deleteAcc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_deleteAcc.FlatAppearance.BorderSize = 0;
+            this.btn_deleteAcc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_deleteAcc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_deleteAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteAcc.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_deleteAcc.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_deleteAcc.Image = ((System.Drawing.Image)(resources.GetObject("btn_deleteAcc.Image")));
+            this.btn_deleteAcc.Location = new System.Drawing.Point(397, 295);
+            this.btn_deleteAcc.Name = "btn_deleteAcc";
+            this.btn_deleteAcc.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_deleteAcc.Size = new System.Drawing.Size(150, 40);
+            this.btn_deleteAcc.TabIndex = 58;
+            this.btn_deleteAcc.Text = " Delete account";
+            this.btn_deleteAcc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_deleteAcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_deleteAcc.UseVisualStyleBackColor = false;
+            this.btn_deleteAcc.Click += new System.EventHandler(this.btn_deleteAcc_Click);
             // 
             // form_edit
             // 
@@ -388,5 +412,6 @@
         private Accounts accounts;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private AccountsTableAdapters.TableTableAdapter tableTableAdapter;
+        private System.Windows.Forms.Button btn_deleteAcc;
     }
 }

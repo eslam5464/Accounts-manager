@@ -108,6 +108,7 @@
             // 
             this.tb_siteName.Location = new System.Drawing.Point(110, 189);
             this.tb_siteName.Name = "tb_siteName";
+            this.tb_siteName.ReadOnly = true;
             this.tb_siteName.Size = new System.Drawing.Size(200, 20);
             this.tb_siteName.TabIndex = 3;
             this.tb_siteName.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -134,6 +135,7 @@
             // 
             this.tb_username.Location = new System.Drawing.Point(110, 215);
             this.tb_username.Name = "tb_username";
+            this.tb_username.ReadOnly = true;
             this.tb_username.Size = new System.Drawing.Size(200, 20);
             this.tb_username.TabIndex = 5;
             this.tb_username.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -151,6 +153,8 @@
             // 
             this.tb_password.Location = new System.Drawing.Point(110, 241);
             this.tb_password.Name = "tb_password";
+            this.tb_password.PasswordChar = '●';
+            this.tb_password.ReadOnly = true;
             this.tb_password.Size = new System.Drawing.Size(200, 20);
             this.tb_password.TabIndex = 7;
             this.tb_password.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -168,6 +172,7 @@
             // 
             this.tb_email.Location = new System.Drawing.Point(110, 267);
             this.tb_email.Name = "tb_email";
+            this.tb_email.ReadOnly = true;
             this.tb_email.Size = new System.Drawing.Size(200, 20);
             this.tb_email.TabIndex = 9;
             this.tb_email.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -186,6 +191,7 @@
             this.tb_otherInfo.Location = new System.Drawing.Point(424, 167);
             this.tb_otherInfo.Multiline = true;
             this.tb_otherInfo.Name = "tb_otherInfo";
+            this.tb_otherInfo.ReadOnly = true;
             this.tb_otherInfo.Size = new System.Drawing.Size(200, 120);
             this.tb_otherInfo.TabIndex = 17;
             this.tb_otherInfo.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -203,6 +209,7 @@
             // 
             this.tb_answer.Location = new System.Drawing.Point(424, 108);
             this.tb_answer.Name = "tb_answer";
+            this.tb_answer.ReadOnly = true;
             this.tb_answer.Size = new System.Drawing.Size(200, 20);
             this.tb_answer.TabIndex = 15;
             this.tb_answer.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -220,6 +227,7 @@
             // 
             this.tb_question.Location = new System.Drawing.Point(424, 82);
             this.tb_question.Name = "tb_question";
+            this.tb_question.ReadOnly = true;
             this.tb_question.Size = new System.Drawing.Size(200, 20);
             this.tb_question.TabIndex = 13;
             this.tb_question.Click += new System.EventHandler(this.tb_selected_controls_Click);
@@ -237,6 +245,7 @@
             // 
             this.tb_phone.Location = new System.Drawing.Point(424, 56);
             this.tb_phone.Name = "tb_phone";
+            this.tb_phone.ReadOnly = true;
             this.tb_phone.Size = new System.Drawing.Size(200, 20);
             this.tb_phone.TabIndex = 11;
             this.tb_phone.Click += new System.EventHandler(this.tb_selected_controls_Click);

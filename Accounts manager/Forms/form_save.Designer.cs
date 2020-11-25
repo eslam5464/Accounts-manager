@@ -223,6 +223,7 @@
             this.tb_save_phone.Name = "tb_save_phone";
             this.tb_save_phone.Size = new System.Drawing.Size(300, 20);
             this.tb_save_phone.TabIndex = 27;
+            this.tb_save_phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_save_phone_KeyPress);
             // 
             // lbl_phone
             // 
@@ -253,6 +254,7 @@
             // 
             this.tb_save_password.Location = new System.Drawing.Point(117, 72);
             this.tb_save_password.Name = "tb_save_password";
+            this.tb_save_password.PasswordChar = '•';
             this.tb_save_password.Size = new System.Drawing.Size(300, 20);
             this.tb_save_password.TabIndex = 23;
             // 

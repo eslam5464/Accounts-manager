@@ -19,7 +19,8 @@ namespace Accounts_manager
         }
 
         private string connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\Accounts.mdf;Integrated Security=True";
-        private string selectedAccID = "";
+        private string selectedAccID = "-1";
+
         private void form_edit_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'accounts.Table' table. You can move, or remove it, as needed.
@@ -77,40 +78,91 @@ namespace Accounts_manager
             {
                 Debug.WriteLine(ex.Message);
             }
+            //Debug.WriteLine("" + lb_edit.SelectedIndex);
         }
 
         private void btn_save_changes_Click(object sender, EventArgs e)
         {
-
-            DialogResult result = MessageBox.Show("Are you sure you want to save changes?", "Notice!.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-            if (result == DialogResult.Yes)
+            if (lb_edit.SelectedIndex != -1)
             {
-                SqlConnection connection;
-                SqlCommand cmd;
+                DialogResult result = MessageBox.Show("Are you sure you want to save changes?", "Notice!.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-                string sql = string.Format("UPDATE dbo.[Table] set [Site name] = '{1}', Username = '{2}'," +
-                    "Password = '{3}', Email = '{4}', Phone = '{5}', Question = '{6}', Answer = '{7}'," +
-                    "[Other information] = '{8}' where Id = '{0}'", selectedAccID, tb_siteName.Text, tb_username.Text,
-                    tb_password.Text, tb_email.Text, int.Parse(tb_phone.Text), tb_question.Text, tb_answer.Text, tb_otherInfo.Text);
-
-                connection = new SqlConnection(connetionString);
-                try
+                if (result == DialogResult.Yes)
                 {
-                    connection.Open();
-                    cmd = new SqlCommand(sql, connection);
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                    Debug.WriteLine("row " + selectedAccID + " changed in the database");
-                    connection.Close();
+                    SqlConnection connection;
+                    SqlCommand cmd;
+
+                    string sql = string.Format("UPDATE dbo.[Table] set [Site name] = '{1}', Username = '{2}'," +
+                        "Password = '{3}', Email = '{4}', Phone = '{5}', Question = '{6}', Answer = '{7}'," +
+                        "[Other information] = '{8}' where Id = '{0}'", selectedAccID, tb_siteName.Text, tb_username.Text,
+                        tb_password.Text, tb_email.Text, int.Parse(tb_phone.Text), tb_question.Text, tb_answer.Text, tb_otherInfo.Text);
+
+                    connection = new SqlConnection(connetionString);
+                    try
+                    {
+                        connection.Open();
+                        cmd = new SqlCommand(sql, connection);
+                        cmd.ExecuteNonQuery();
+                        cmd.Dispose();
+                        connection.Close();
+                        Debug.WriteLine("row " + selectedAccID + " changed in the database");
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+                    this.tableTableAdapter.Fill(this.accounts.Table);
                 }
-                catch (Exception ex)
+            }
+        }
+
+        private void btn_deleteAcc_Click(object sender, EventArgs e)
+        {
+            if (lb_edit.SelectedIndex != -1)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this account?", "Alarm!.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    Debug.WriteLine(ex.Message);
+                    //Debug.WriteLine("start index :" + lb_edit_selectedIndex);
+                    SqlConnection connection;
+                    SqlCommand cmd;
+
+                    string sql = string.Format("delete from dbo.[Table] where Id = '" + selectedAccID + "'");
+
+                    connection = new SqlConnection(connetionString);
+                    try
+                    {
+                        connection.Open();
+                        cmd = new SqlCommand(sql, connection);
+                        cmd.ExecuteNonQuery();
+                        cmd.Dispose();
+                        connection.Close();
+                        Debug.WriteLine("row " + selectedAccID + " deleted in the database");
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+
+                    //lb_edit.SelectedIndex = lb_edit_selectedIndex - 1;
+                    int lastSelectedIndex = lb_edit.SelectedIndex;
+
+                    this.tableTableAdapter.Fill(this.accounts.Table);
+
+                    lb_edit.Refresh();
+                    lb_edit.SelectedIndex = lastSelectedIndex - 1;
+
+                    Debug.WriteLine("" + lb_edit.SelectedIndex);
                 }
 
-                this.tableTableAdapter.Fill(this.accounts.Table);
-            } 
+                if (lb_edit.Items.Count == 0)
+                {
+                    tb_siteName.Text = ""; tb_username.Text = "";
+                    tb_password.Text = ""; tb_email.Text = ""; tb_phone.Text = "";
+                    tb_question.Text = ""; tb_answer.Text = ""; tb_otherInfo.Text = "";
+                    tb_timeCreated.Text = "";
+                }
+            }
         }
     }
 }
