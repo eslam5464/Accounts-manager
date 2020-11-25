@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_edit));
             this.panel_edit = new System.Windows.Forms.Panel();
-            this.btn_save_changes = new System.Windows.Forms.Button();
-            this.panel_edit_header = new System.Windows.Forms.Panel();
-            this.lbl_edit = new System.Windows.Forms.Label();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.lbl_date_created = new System.Windows.Forms.Label();
             this.lb_edit = new System.Windows.Forms.ListBox();
@@ -55,6 +52,9 @@
             this.tb_email = new System.Windows.Forms.TextBox();
             this.tb_phone = new System.Windows.Forms.TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
+            this.btn_save_changes = new System.Windows.Forms.Button();
+            this.panel_edit_header = new System.Windows.Forms.Panel();
+            this.lbl_edit = new System.Windows.Forms.Label();
             this.accounts = new Accounts_manager.Accounts();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableTableAdapter = new Accounts_manager.AccountsTableAdapters.TableTableAdapter();
@@ -94,48 +94,6 @@
             this.panel_edit.Name = "panel_edit";
             this.panel_edit.Size = new System.Drawing.Size(432, 321);
             this.panel_edit.TabIndex = 40;
-            // 
-            // btn_save_changes
-            // 
-            this.btn_save_changes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btn_save_changes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_save_changes.FlatAppearance.BorderSize = 0;
-            this.btn_save_changes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
-            this.btn_save_changes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
-            this.btn_save_changes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save_changes.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btn_save_changes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_save_changes.Image = ((System.Drawing.Image)(resources.GetObject("btn_save_changes.Image")));
-            this.btn_save_changes.Location = new System.Drawing.Point(248, 295);
-            this.btn_save_changes.Name = "btn_save_changes";
-            this.btn_save_changes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_save_changes.Size = new System.Drawing.Size(150, 40);
-            this.btn_save_changes.TabIndex = 36;
-            this.btn_save_changes.Text = " Save changes";
-            this.btn_save_changes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save_changes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_save_changes.UseVisualStyleBackColor = false;
-            // 
-            // panel_edit_header
-            // 
-            this.panel_edit_header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
-            this.panel_edit_header.Controls.Add(this.lbl_edit);
-            this.panel_edit_header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_edit_header.Location = new System.Drawing.Point(0, 0);
-            this.panel_edit_header.Name = "panel_edit_header";
-            this.panel_edit_header.Size = new System.Drawing.Size(432, 40);
-            this.panel_edit_header.TabIndex = 39;
-            // 
-            // lbl_edit
-            // 
-            this.lbl_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
-            this.lbl_edit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_edit.Location = new System.Drawing.Point(0, 0);
-            this.lbl_edit.Name = "lbl_edit";
-            this.lbl_edit.Size = new System.Drawing.Size(432, 40);
-            this.lbl_edit.TabIndex = 0;
-            this.lbl_edit.Text = "Edit";
-            this.lbl_edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_viewBy
             // 
@@ -321,6 +279,49 @@
             this.lbl_email.Size = new System.Drawing.Size(35, 13);
             this.lbl_email.TabIndex = 47;
             this.lbl_email.Text = "Email:";
+            // 
+            // btn_save_changes
+            // 
+            this.btn_save_changes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_save_changes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_save_changes.FlatAppearance.BorderSize = 0;
+            this.btn_save_changes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_save_changes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_save_changes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_save_changes.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_save_changes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_save_changes.Image = ((System.Drawing.Image)(resources.GetObject("btn_save_changes.Image")));
+            this.btn_save_changes.Location = new System.Drawing.Point(248, 295);
+            this.btn_save_changes.Name = "btn_save_changes";
+            this.btn_save_changes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_save_changes.Size = new System.Drawing.Size(150, 40);
+            this.btn_save_changes.TabIndex = 36;
+            this.btn_save_changes.Text = " Save changes";
+            this.btn_save_changes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save_changes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_save_changes.UseVisualStyleBackColor = false;
+            this.btn_save_changes.Click += new System.EventHandler(this.btn_save_changes_Click);
+            // 
+            // panel_edit_header
+            // 
+            this.panel_edit_header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.panel_edit_header.Controls.Add(this.lbl_edit);
+            this.panel_edit_header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_edit_header.Location = new System.Drawing.Point(0, 0);
+            this.panel_edit_header.Name = "panel_edit_header";
+            this.panel_edit_header.Size = new System.Drawing.Size(432, 40);
+            this.panel_edit_header.TabIndex = 39;
+            // 
+            // lbl_edit
+            // 
+            this.lbl_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.lbl_edit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_edit.Location = new System.Drawing.Point(0, 0);
+            this.lbl_edit.Name = "lbl_edit";
+            this.lbl_edit.Size = new System.Drawing.Size(432, 40);
+            this.lbl_edit.TabIndex = 0;
+            this.lbl_edit.Text = "Edit";
+            this.lbl_edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // accounts
             // 

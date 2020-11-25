@@ -19,11 +19,12 @@ namespace Accounts_manager
         }
 
         private string connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\Accounts.mdf;Integrated Security=True";
-
+        private string selectedAccID = "";
         private void form_edit_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'accounts.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.accounts.Table);
+
             lbl_edit.Font = new Font("Microsoft Sans Serif", Height / 30, FontStyle.Regular);
             panel_edit_header.Height = Height / 15;
         }
@@ -67,6 +68,7 @@ namespace Accounts_manager
                     tb_siteName.Text = reader["Site name"].ToString();
                     tb_timeCreated.Text = reader["Time created"].ToString();
                     tb_username.Text = reader["Username"].ToString();
+                    selectedAccID = reader["Id"].ToString();
                 }
 
                 connection.Close();
@@ -75,6 +77,40 @@ namespace Accounts_manager
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        private void btn_save_changes_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("Are you sure you want to save changes?", "Notice!.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (result == DialogResult.Yes)
+            {
+                SqlConnection connection;
+                SqlCommand cmd;
+
+                string sql = string.Format("UPDATE dbo.[Table] set [Site name] = '{1}', Username = '{2}'," +
+                    "Password = '{3}', Email = '{4}', Phone = '{5}', Question = '{6}', Answer = '{7}'," +
+                    "[Other information] = '{8}' where Id = '{0}'", selectedAccID, tb_siteName.Text, tb_username.Text,
+                    tb_password.Text, tb_email.Text, int.Parse(tb_phone.Text), tb_question.Text, tb_answer.Text, tb_otherInfo.Text);
+
+                connection = new SqlConnection(connetionString);
+                try
+                {
+                    connection.Open();
+                    cmd = new SqlCommand(sql, connection);
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    Debug.WriteLine("row " + selectedAccID + " changed in the database");
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+
+                this.tableTableAdapter.Fill(this.accounts.Table);
+            } 
         }
     }
 }
