@@ -78,7 +78,6 @@ namespace Accounts_manager
             {
                 Debug.WriteLine(ex.Message);
             }
-            //Debug.WriteLine("" + lb_edit.SelectedIndex);
         }
 
         private void btn_save_changes_Click(object sender, EventArgs e)

@@ -33,23 +33,8 @@ namespace Accounts_manager
 
         private void cb_searchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (cb_searchBy.SelectedItem.ToString() == "Username")
-            //{
-            //    //lb_main.ValueMember = "Id";
-
-            //    lb_main.DisplayMember = "Username";
-            //}
-
-            //else if (cb_searchBy.SelectedItem.ToString() == "Site name")
-            //{
-            //    //lb_main.ValueMember = "Id";
-
-            //    lb_main.DisplayMember = "Site name";
-            //}
             lb_main.DataSource = tableBindingSource;
             lb_main.DisplayMember = cb_searchBy.SelectedItem.ToString();
-            //this.tableTableAdapter.Fill(this.accounts.Table);
-            //MessageBox.Show(cb_searchBy.SelectedItem.ToString());
         }
 
         private void lb_main_SelectedIndexChanged(object sender, EventArgs e)

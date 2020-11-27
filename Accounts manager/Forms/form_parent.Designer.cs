@@ -224,9 +224,9 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(52, 72);
+            this.pictureBox1.Location = new System.Drawing.Point(50, 33);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(333, 249);
+            this.pictureBox1.Size = new System.Drawing.Size(333, 333);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -265,8 +265,8 @@
         private System.Windows.Forms.PictureBox pic_logo;
         private System.Windows.Forms.Panel panel_splitSideMenu;
         private System.Windows.Forms.Panel panel_childForm;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_exit;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
