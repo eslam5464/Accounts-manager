@@ -33,7 +33,6 @@
             this.lbl_save = new System.Windows.Forms.Label();
             this.panel_save_parent = new System.Windows.Forms.Panel();
             this.panel_save = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_save_clearTB = new System.Windows.Forms.Button();
             this.btn_save_addData = new System.Windows.Forms.Button();
             this.tb_save_otherInfo = new System.Windows.Forms.TextBox();
@@ -89,7 +88,6 @@
             // 
             this.panel_save.AutoScroll = true;
             this.panel_save.BackColor = System.Drawing.Color.Silver;
-            this.panel_save.Controls.Add(this.button1);
             this.panel_save.Controls.Add(this.btn_save_clearTB);
             this.panel_save.Controls.Add(this.btn_save_addData);
             this.panel_save.Controls.Add(this.tb_save_otherInfo);
@@ -113,16 +111,6 @@
             this.panel_save.Name = "panel_save";
             this.panel_save.Size = new System.Drawing.Size(432, 321);
             this.panel_save.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(375, 275);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_save_clearTB
             // 
@@ -341,6 +329,5 @@
         private System.Windows.Forms.TextBox tb_save_siteName;
         private System.Windows.Forms.Button btn_save_addData;
         private System.Windows.Forms.Button btn_save_clearTB;
-        private System.Windows.Forms.Button button1;
     }
 }

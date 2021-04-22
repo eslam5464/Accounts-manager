@@ -14,62 +14,47 @@ namespace Accounts_manager
 {
     public class Methods
     {
-        public string db_name = "Accounts.accdb", keyFileName = "key.txt", keyFileNameEnc = "key.txt.aes";
-        public string folder_location = @Path.GetPathRoot(Environment.SystemDirectory) + @"Accounts manager\Data\";
-        public string DBpassword = "";
+        //public string DBpassword = "";
+        private static string PassKey = "";
 
-        public bool CheckFiles()
+        internal static bool checkDataFileExists()
         {
-            if (!Directory.Exists(folder_location))
-                Directory.CreateDirectory(folder_location);
+            if (!File.Exists("/AccountsData.db"))
+                return true;
 
-            if (!File.Exists(folder_location + keyFileName) && !File.Exists(folder_location + keyFileName + ".aes"))
-                File.Create(folder_location + keyFileName).Close();
-
-            if (!File.Exists(folder_location + db_name))
-                return false;
-
-            return true;
+            return false;
         }
 
         internal string CheckPass(string pass)
         {
-            
+
             return "";
-        }
-
-        internal void Add()
-        {
-            //PersonModel person = new PersonModel
-            //{
-            //    FirstName = tb_firstName.Text,
-            //    LastName = tb_lastName.Text,
-            //    PrimaryAddress = new AddressModel
-            //    {
-            //        StreetAddress = "101 st",
-            //        City = "Unknown",
-            //        ZipCode = "55567"
-            //    }
-            //};
-
-            Debug.WriteLine(DBpassword);
         }
 
         public void ConnectDB()
         {
-            
+
         }
 
         #region security methods
 
         internal readonly static byte[] saltBytes = randomSalt();
-        internal readonly static int salt_length = 32;
+        internal readonly static int salt_length = 8;
         internal readonly static int Keysize = 256;
         internal readonly static int DerivationIterations = 1000;
 
         [DllImport("KERNEL32.DLL", EntryPoint = "RtlZeroMemory")]
 
         public static extern bool ZeroMemory(IntPtr Destination, int Length);
+
+        public bool checkMasterKey(string MasterKey)
+        {
+            string output = "Welcome to the DB";
+
+
+
+            return false;
+        }
 
         public static byte[] GenerateRandomSalt()
         {
@@ -84,13 +69,11 @@ namespace Accounts_manager
 
         private void FileEncrypt(string inputFile)
         {
-            string password = "tDf^ss&%mllj57$#+3550Yhlz;.218QP@DL{}896#4p0uu";
-
             byte[] salt = GenerateRandomSalt();
 
             FileStream fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
 
-            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(PassKey);
 
             RijndaelManaged AES = new RijndaelManaged();
             AES.KeySize = 256;
@@ -136,8 +119,7 @@ namespace Accounts_manager
 
         public void FileDecrypt(string inputFile, string outputFile)
         {
-            string password = "tDf^ss&%mllj57$#+3550Yhlz;.218QP@DL{}896#4p0uu";
-            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(PassKey);
             byte[] salt = new byte[32];
 
             FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
@@ -251,11 +233,10 @@ namespace Accounts_manager
 
         internal static string Encrypt(string plainText)
         {
-            string pass = "tDf^ss&%mllj57$#+3550Yhlz;.218QP@DL{}896#4p0uu";
             var saltStringBytes = Generate256BitsOfRandomEntropy();
             var ivStringBytes = Generate256BitsOfRandomEntropy();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            using (var password = new Rfc2898DeriveBytes(pass, saltStringBytes, DerivationIterations))
+            using (var password = new Rfc2898DeriveBytes(PassKey, saltStringBytes, DerivationIterations))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = new RijndaelManaged())
@@ -286,13 +267,12 @@ namespace Accounts_manager
 
         internal static string Decrypt(string cipherText)
         {
-            string pass = "tDf^ss&%mllj57$#+3550Yhlz;.218QP@DL{}896#4p0uu";
             var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(cipherText);
             var saltStringBytes = cipherTextBytesWithSaltAndIv.Take(Keysize / 8).ToArray();
             var ivStringBytes = cipherTextBytesWithSaltAndIv.Skip(Keysize / 8).Take(Keysize / 8).ToArray();
             var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((Keysize / 8) * 2).Take(cipherTextBytesWithSaltAndIv.Length - ((Keysize / 8) * 2)).ToArray();
 
-            using (var password = new Rfc2898DeriveBytes(pass, saltStringBytes, DerivationIterations))
+            using (var password = new Rfc2898DeriveBytes(PassKey, saltStringBytes, DerivationIterations))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = new RijndaelManaged())

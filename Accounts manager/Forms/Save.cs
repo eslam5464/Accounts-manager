@@ -39,18 +39,18 @@ namespace Accounts_manager
 
             if (tb_save_siteName.Text != "")
             {
-                account.SiteName = tb_save_siteName.Text;
-                account.Username = tb_save_username.Text;
-                account.Password = tb_save_password.Text;
-                account.Email = tb_save_email.Text;
-                account.Phone = tb_save_phone.Text;
-                account.Question = tb_save_question.Text;
-                account.Answer = tb_save_answer.Text;
-                account.OtherInfo = tb_save_otherInfo.Text;
-                account.DateCreated = DateTime.Now;
+                account.SiteName = Methods.Encrypt(tb_save_siteName.Text);
+                account.Username = Methods.Encrypt(tb_save_username.Text);
+                account.Password = Methods.Encrypt(tb_save_password.Text);
+                account.Email = Methods.Encrypt(tb_save_email.Text);
+                account.Phone = Methods.Encrypt(tb_save_phone.Text);
+                account.Question = Methods.Encrypt(tb_save_question.Text);
+                account.Answer = Methods.Encrypt(tb_save_answer.Text);
+                account.OtherInfo = Methods.Encrypt(tb_save_otherInfo.Text);
+                account.DateCreated = Methods.Encrypt(DateTime.Now.ToString("yyyy/M/dd hh:mm tt"));
 
                 DataAccess.AddAccount(account);
-                MessageBox.Show("saved");
+                MessageBox.Show("Account saved");
             }
             else
             {
@@ -73,11 +73,6 @@ namespace Accounts_manager
         private void tb_save_siteName_Enter(object sender, EventArgs e)
         {
             tb_save_siteName.BackColor = DefaultBackColor;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("saved");
         }
 
         private void tb_save_phone_KeyPress(object sender, KeyPressEventArgs e)

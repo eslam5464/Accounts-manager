@@ -388,7 +388,6 @@
         private System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.TextBox tb_phone;
         private System.Windows.Forms.Label lbl_email;
-        private System.Windows.Forms.BindingSource tableBindingSource;
         private System.Windows.Forms.Button btn_deleteAcc;
     }
 }

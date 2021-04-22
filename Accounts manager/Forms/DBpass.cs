@@ -29,6 +29,18 @@ namespace Accounts_manager
         {
             btn_check.Enabled = false;
 
+            if (tb_pass.Text != "")
+                if (Methods.checkDataFileExists())
+                {
+
+                }
+                else
+                    MessageBox.Show("Can't find Database file\nPlease reinstall the application");
+
+            else
+                MessageBox.Show("Please type the master password");
+
+            btn_check.Enabled = true;
         }
 
         private void setForm(bool isCreatedDB)

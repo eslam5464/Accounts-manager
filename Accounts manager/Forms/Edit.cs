@@ -35,7 +35,7 @@ namespace Accounts_manager
 
         private void cb_searchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lb_edit.DataSource = tableBindingSource;
+            //lb_edit.DataSource = tableBindingSource;
             lb_edit.DisplayMember = cb_searchBy.SelectedItem.ToString();
         }
 

@@ -16,6 +16,6 @@ namespace Accounts_manager.Classes
         public string Question { get; set; }
         public string Answer { get; set; }
         public string OtherInfo { get; set; }
-        public DateTime DateCreated { get; set; }
+        public string DateCreated { get; set; }
     }
 }

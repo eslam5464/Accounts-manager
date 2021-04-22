@@ -13,7 +13,7 @@ namespace Accounts_manager
 {
     public partial class form_parent : Form
     {
-        private readonly Methods methods = new Methods();// db pass problem
+        //private readonly Methods methods = new Methods();// db pass problem
 
         public form_parent()
         {
@@ -62,7 +62,7 @@ namespace Accounts_manager
 
         private void Form_parent_Load(object sender, EventArgs e)
         {
-            new Thread(() => methods.ConnectDB()).Start();
+            //new Thread(() => methods.ConnectDB()).Start();
 
             this.WindowState = Properties.Settings.Default.WindowState;
 
@@ -80,6 +80,9 @@ namespace Accounts_manager
             {
                 this.Location = new Point(10, 10);
             }
+
+            form_dbPass frm = new form_dbPass();
+            frm.ShowDialog();
         }
 
         #endregion

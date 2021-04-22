@@ -50,7 +50,7 @@
             this.lbl_phone = new System.Windows.Forms.Label();
             this.tb_phone = new System.Windows.Forms.TextBox();
             this.lbl_date_created = new System.Windows.Forms.Label();
-            this.tb_timeCreated = new System.Windows.Forms.TextBox();
+            this.tb_dateCreated = new System.Windows.Forms.TextBox();
             this.btn_copy_control_txt = new System.Windows.Forms.Button();
             this.panel_main_header = new System.Windows.Forms.Panel();
             this.lbl_main = new System.Windows.Forms.Label();
@@ -68,7 +68,6 @@
             this.lb_main.Name = "lb_main";
             this.lb_main.ScrollAlwaysVisible = true;
             this.lb_main.Size = new System.Drawing.Size(295, 108);
-            this.lb_main.Sorted = true;
             this.lb_main.TabIndex = 0;
             this.lb_main.SelectedIndexChanged += new System.EventHandler(this.lb_main_SelectedIndexChanged);
             // 
@@ -77,17 +76,16 @@
             this.cb_searchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_searchBy.FormattingEnabled = true;
             this.cb_searchBy.Items.AddRange(new object[] {
-            "Answer",
+            "Site Name",
+            "Username",
             "Email",
-            "Other information",
             "Phone",
             "Question",
-            "Site name",
-            "Username"});
+            "Answer",
+            "Date created"});
             this.cb_searchBy.Location = new System.Drawing.Point(88, 9);
             this.cb_searchBy.Name = "cb_searchBy";
             this.cb_searchBy.Size = new System.Drawing.Size(150, 21);
-            this.cb_searchBy.Sorted = true;
             this.cb_searchBy.TabIndex = 1;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
@@ -255,14 +253,14 @@
             this.lbl_date_created.TabIndex = 20;
             this.lbl_date_created.Text = "Date created:";
             // 
-            // tb_timeCreated
+            // tb_dateCreated
             // 
-            this.tb_timeCreated.Location = new System.Drawing.Point(424, 134);
-            this.tb_timeCreated.Name = "tb_timeCreated";
-            this.tb_timeCreated.ReadOnly = true;
-            this.tb_timeCreated.Size = new System.Drawing.Size(200, 20);
-            this.tb_timeCreated.TabIndex = 19;
-            this.tb_timeCreated.Click += new System.EventHandler(this.tb_selected_controls_Click);
+            this.tb_dateCreated.Location = new System.Drawing.Point(424, 134);
+            this.tb_dateCreated.Name = "tb_dateCreated";
+            this.tb_dateCreated.ReadOnly = true;
+            this.tb_dateCreated.Size = new System.Drawing.Size(200, 20);
+            this.tb_dateCreated.TabIndex = 19;
+            this.tb_dateCreated.Click += new System.EventHandler(this.tb_selected_controls_Click);
             // 
             // btn_copy_control_txt
             // 
@@ -314,7 +312,7 @@
             this.panel_main.Controls.Add(this.lbl_viewBy);
             this.panel_main.Controls.Add(this.lbl_date_created);
             this.panel_main.Controls.Add(this.lb_main);
-            this.panel_main.Controls.Add(this.tb_timeCreated);
+            this.panel_main.Controls.Add(this.tb_dateCreated);
             this.panel_main.Controls.Add(this.cb_searchBy);
             this.panel_main.Controls.Add(this.lbl_other_info);
             this.panel_main.Controls.Add(this.tb_siteName);
@@ -382,7 +380,7 @@
         private System.Windows.Forms.Label lbl_phone;
         private System.Windows.Forms.TextBox tb_phone;
         private System.Windows.Forms.Label lbl_date_created;
-        private System.Windows.Forms.TextBox tb_timeCreated;
+        private System.Windows.Forms.TextBox tb_dateCreated;
         private System.Windows.Forms.Button btn_copy_control_txt;
         private System.Windows.Forms.Panel panel_main_header;
         private System.Windows.Forms.Label lbl_main;
