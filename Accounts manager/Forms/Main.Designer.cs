@@ -55,13 +55,9 @@
             this.panel_main_header = new System.Windows.Forms.Panel();
             this.lbl_main = new System.Windows.Forms.Label();
             this.panel_main = new System.Windows.Forms.Panel();
-            this.accounts = new Accounts_manager.Accounts();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableTableAdapter = new Accounts_manager.AccountsTableAdapters.TableTableAdapter();
-            this.tableAdapterManager = new Accounts_manager.AccountsTableAdapters.TableAdapterManager();
             this.panel_main_header.SuspendLayout();
             this.panel_main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -342,26 +338,6 @@
             this.panel_main.Size = new System.Drawing.Size(432, 321);
             this.panel_main.TabIndex = 38;
             // 
-            // accounts
-            // 
-            this.accounts.DataSetName = "Accounts";
-            this.accounts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.accounts;
-            // 
-            // tableTableAdapter
-            // 
-            this.tableTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.TableTableAdapter = this.tableTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Accounts_manager.AccountsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,7 +354,6 @@
             this.panel_main_header.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -387,12 +362,9 @@
         #endregion
 
         private System.Windows.Forms.ListBox lb_main;
-        private Accounts accounts;
         private System.Windows.Forms.BindingSource tableBindingSource;
-        private AccountsTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Label lbl_viewBy;
-        private AccountsTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox tb_siteName;
         private System.Windows.Forms.Label lbl_siteName;
         private System.Windows.Forms.Label lbl_username;

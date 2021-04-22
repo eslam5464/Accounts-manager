@@ -55,14 +55,9 @@
             this.btn_save_changes = new System.Windows.Forms.Button();
             this.panel_edit_header = new System.Windows.Forms.Panel();
             this.lbl_edit = new System.Windows.Forms.Label();
-            this.accounts = new Accounts_manager.Accounts();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableTableAdapter = new Accounts_manager.AccountsTableAdapters.TableTableAdapter();
             this.btn_deleteAcc = new System.Windows.Forms.Button();
             this.panel_edit.SuspendLayout();
             this.panel_edit_header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_edit
@@ -325,20 +320,6 @@
             this.lbl_edit.Text = "Edit";
             this.lbl_edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // accounts
-            // 
-            this.accounts.DataSetName = "Accounts";
-            this.accounts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.accounts;
-            // 
-            // tableTableAdapter
-            // 
-            this.tableTableAdapter.ClearBeforeFill = true;
-            // 
             // btn_deleteAcc
             // 
             this.btn_deleteAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
@@ -376,8 +357,6 @@
             this.panel_edit.ResumeLayout(false);
             this.panel_edit.PerformLayout();
             this.panel_edit_header.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,9 +388,7 @@
         private System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.TextBox tb_phone;
         private System.Windows.Forms.Label lbl_email;
-        private Accounts accounts;
         private System.Windows.Forms.BindingSource tableBindingSource;
-        private AccountsTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.Button btn_deleteAcc;
     }
 }

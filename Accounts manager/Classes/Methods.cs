@@ -17,9 +17,8 @@ namespace Accounts_manager
         public string db_name = "Accounts.accdb", keyFileName = "key.txt", keyFileNameEnc = "key.txt.aes";
         public string folder_location = @Path.GetPathRoot(Environment.SystemDirectory) + @"Accounts manager\Data\";
         public string DBpassword = "";
-        private string connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\Accounts.mdf;Integrated Security=True";
 
-        public bool checkFiles()
+        public bool CheckFiles()
         {
             if (!Directory.Exists(folder_location))
                 Directory.CreateDirectory(folder_location);
@@ -33,153 +32,32 @@ namespace Accounts_manager
             return true;
         }
 
-        public void createDB(string password)
+        internal string CheckPass(string pass)
         {
-            string connectionString =
-                  @"Provider=Microsoft.ACE.OLEDB.12.0;Data"
-                + @" Source=" + folder_location + db_name
-                + ";Jet OLEDB:Database Password=" + password + ";";
-
-            ADOX.Catalog cat = new ADOX.Catalog();
-            cat.Create(connectionString);
-
-            ADODB.Connection con =
-                 cat.ActiveConnection as ADODB.Connection;
-            if (con != null)
-                con.Close();
-
-            //DBpassword = Encrypt(password);
-            DBpassword = password;
-            Debug.WriteLine(DBpassword);
-
-            StreamWriter Fread = new StreamWriter(folder_location + keyFileName);
-            Fread.WriteLine(DBpassword);
-            Fread.Close();
-            //FileEncrypt(folder_location + keyFileName);
-        }
-
-        internal string checkPass(string pass)
-        {
-            string connectionString =
-                  @"Provider=Microsoft.ACE.OLEDB.12.0;Data"
-                + @" Source=" + folder_location + db_name
-                + ";Jet OLEDB:Database Password=" + pass + ";";
-
-            try
-            {
-                OleDbConnection conn = new OleDbConnection(connectionString);
-                conn.Open();
-                //DBpassword = Encrypt(pass);
-                DBpassword = pass;
-                Debug.WriteLine(DBpassword);
-                conn.Close();
-                conn.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return ex.Message;
-            }
+            
             return "";
         }
 
-        internal void add()
+        internal void Add()
         {
-            //FileDecrypt(folder_location + keyFileNameEnc, folder_location);
-            //DBpassword=
-            Debug.WriteLine(DBpassword);
-            //String connectionString =
-            //   @"Provider=Microsoft.ACE.OLEDB.12.0;Data"
-            // + @" Source=C:\Users\patman\Desktop\" + db_name
-            // + ";Jet OLEDB:Database Password=" + Decrypt(DBpassword) + ";";
-
-
-            //ADOX.Catalog cat = new ADOX.Catalog();
-            //cat.Create(connectionString);
-
-            ////Now Close the database
-            //ADODB.Connection con =
-            //     cat.ActiveConnection as ADODB.Connection;
-            //if (con != null)
-            //    con.Close();
-
-            //Debug.WriteLine("Database '" + db_name + "' Created");
-
-            ////Create Table
-            //String tableName = "NEW_TABLE";
-            //String createSQL = "CREATE TABLE " + tableName + "("
-            //   + "id INTEGER IDENTITY(1,1) PRIMARY KEY NOT NULL,"
-            //   + " first_name varchar (255),"
-            //   + " last_name varchar (255)"
-            //   + ")";
-
-            //OleDbConnection conn =
-            //        new OleDbConnection(connectionString);
-            //OleDbCommand dbCmd = new OleDbCommand();
-
-            //try
+            //PersonModel person = new PersonModel
             //{
-            //    //Open Database Connection
-            //    conn.Open();
-
-            //    dbCmd.Connection = conn;
-            //    dbCmd.CommandText = createSQL;
-            //    dbCmd.ExecuteNonQuery();
-
-            //    Debug.WriteLine("Table Created");
-
-            //    //---insert into the table -----
-            //    String query = "select * from " + tableName;
-            //    DataSet ds = new DataSet();
-            //    OleDbDataAdapter da =
-            //           new OleDbDataAdapter(query, conn);
-            //    OleDbCommandBuilder cmdB =
-            //           new OleDbCommandBuilder(da);
-            //    da.MissingSchemaAction =
-            //           MissingSchemaAction.AddWithKey;
-
-            //    //Fill the DataSet
-            //    da.Fill(ds, tableName);
-
-            //    //--- Insert row into Table
-            //    DataRow row = ds.Tables[tableName].NewRow();
-            //    row["first_name"] = "Patrick";
-            //    row["last_name"] = "Bailey";
-            //    ds.Tables[tableName].Rows.Add(row);
-            //    da.Update(ds, tableName);
-
-            //    //Close the Database Connection
-            //    conn.Close();
-            //    Debug.WriteLine("Data inserted into the Database");
-            //}
-            //catch (OleDbException exp)
-            //{
-            //    Debug.WriteLine(exp.Message.ToString());
-            //}
-            //finally
-            //{
-            //    if (conn.State == ConnectionState.Open)
+            //    FirstName = tb_firstName.Text,
+            //    LastName = tb_lastName.Text,
+            //    PrimaryAddress = new AddressModel
             //    {
-            //        conn.Close();
+            //        StreetAddress = "101 st",
+            //        City = "Unknown",
+            //        ZipCode = "55567"
             //    }
-            //}
+            //};
+
+            Debug.WriteLine(DBpassword);
         }
 
-        public void connectDB()
+        public void ConnectDB()
         {
-            SqlConnection connection;
-
-            connection = new SqlConnection(connetionString);
-            try
-            {
-                connection.Open();
-                Debug.WriteLine("connected to DB");
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+            
         }
 
         #region security methods

@@ -23,9 +23,6 @@ namespace Accounts_manager
 
         private void form_edit_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'accounts.Table' table. You can move, or remove it, as needed.
-            this.tableTableAdapter.Fill(this.accounts.Table);
-
             lbl_edit.Font = new Font("Microsoft Sans Serif", Height / 30, FontStyle.Regular);
             panel_edit_header.Height = Height / 15;
         }
@@ -110,7 +107,6 @@ namespace Accounts_manager
                     {
                         Debug.WriteLine(ex.Message);
                     }
-                    this.tableTableAdapter.Fill(this.accounts.Table);
                 }
             }
         }
@@ -145,8 +141,6 @@ namespace Accounts_manager
 
                     //lb_edit.SelectedIndex = lb_edit_selectedIndex - 1;
                     int lastSelectedIndex = lb_edit.SelectedIndex;
-
-                    this.tableTableAdapter.Fill(this.accounts.Table);
 
                     lb_edit.Refresh();
                     lb_edit.SelectedIndex = lastSelectedIndex - 1;

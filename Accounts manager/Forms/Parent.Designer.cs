@@ -83,7 +83,7 @@
             this.btn_exit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_exit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_exit.UseVisualStyleBackColor = true;
-            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            this.btn_exit.Click += new System.EventHandler(this.Btn_exit_Click);
             // 
             // btn_about
             // 
@@ -105,7 +105,7 @@
             this.btn_about.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_about.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_about.UseVisualStyleBackColor = true;
-            this.btn_about.Click += new System.EventHandler(this.btn_about_Click);
+            this.btn_about.Click += new System.EventHandler(this.Btn_about_Click);
             // 
             // btn_edit
             // 
@@ -127,7 +127,7 @@
             this.btn_edit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_edit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_edit.UseVisualStyleBackColor = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            this.btn_edit.Click += new System.EventHandler(this.Btn_edit_Click);
             // 
             // btn_save
             // 
@@ -150,7 +150,7 @@
             this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btn_save.Click += new System.EventHandler(this.Btn_save_Click);
             // 
             // btn_main
             // 
@@ -173,7 +173,7 @@
             this.btn_main.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_main.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_main.UseVisualStyleBackColor = false;
-            this.btn_main.Click += new System.EventHandler(this.btn_main_Click);
+            this.btn_main.Click += new System.EventHandler(this.Btn_main_Click);
             // 
             // panel_logo
             // 
@@ -197,9 +197,9 @@
             this.pic_logo.Size = new System.Drawing.Size(150, 100);
             this.pic_logo.TabIndex = 0;
             this.pic_logo.TabStop = false;
-            this.pic_logo.Click += new System.EventHandler(this.pic_logo_Click);
-            this.pic_logo.MouseEnter += new System.EventHandler(this.pic_logo_MouseEnter);
-            this.pic_logo.MouseLeave += new System.EventHandler(this.pic_logo_MouseLeave);
+            this.pic_logo.Click += new System.EventHandler(this.Pic_logo_Click);
+            this.pic_logo.MouseEnter += new System.EventHandler(this.Pic_logo_MouseEnter);
+            this.pic_logo.MouseLeave += new System.EventHandler(this.Pic_logo_MouseLeave);
             // 
             // panel_splitSideMenu
             // 
@@ -243,8 +243,8 @@
             this.MinimumSize = new System.Drawing.Size(616, 439);
             this.Name = "form_parent";
             this.Text = "Accounts manager";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_parent_FormClosing);
-            this.Load += new System.EventHandler(this.form_parent_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_parent_FormClosing);
+            this.Load += new System.EventHandler(this.Form_parent_Load);
             this.panel_leftMenu.ResumeLayout(false);
             this.panel_logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();

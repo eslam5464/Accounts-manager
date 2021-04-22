@@ -13,13 +13,14 @@ namespace Accounts_manager
 {
     public partial class form_parent : Form
     {
-        private Methods methods = new Methods();// db pass problem
+        private readonly Methods methods = new Methods();// db pass problem
 
         public form_parent()
         {
             InitializeComponent();
         }
 
+        #region Forms methods
         private Form activeForm = null;
 
         private void openChildForm(Form childForm)
@@ -48,7 +49,7 @@ namespace Accounts_manager
                 childForm.Show();
             }
         }
-        private void removeActiveForm()
+        private void RemoveActiveForm()
         {
             if (activeForm != null)
             {
@@ -59,9 +60,9 @@ namespace Accounts_manager
             }
         }
 
-        private void form_parent_Load(object sender, EventArgs e)
+        private void Form_parent_Load(object sender, EventArgs e)
         {
-            new Thread(() => methods.connectDB()).Start();
+            new Thread(() => methods.ConnectDB()).Start();
 
             this.WindowState = Properties.Settings.Default.WindowState;
 
@@ -81,61 +82,67 @@ namespace Accounts_manager
             }
         }
 
-        public string methods_checkpass(string Password)
-        {
-            return methods.checkPass(Password);
-        }
+        #endregion
 
-        public void methods_createDB(string Password)
-        {
-            methods.createDB(Password);
-        }
+        //public string Methods_checkpass(string Password)
+        //{
+        //    return methods.CheckPass(Password);
+        //}
 
-        //-----------------------------------------------------------------
-        #region side menu buttons
-        private void btn_main_Click(object sender, EventArgs e)
+        //public void methods_createDB(string Password)
+        //{
+        //    methods.CreateDB(Password);
+        //}
+
+        #region Side menu buttons
+        private void Btn_main_Click(object sender, EventArgs e)
         {
             openChildForm(new form_main());
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void Btn_save_Click(object sender, EventArgs e)
         {
             openChildForm(new form_save());
         }
 
-        private void btn_edit_Click(object sender, EventArgs e)
+        private void Btn_edit_Click(object sender, EventArgs e)
         {
             openChildForm(new form_edit());
         }
 
-        private void btn_about_Click(object sender, EventArgs e)
+        private void Btn_about_Click(object sender, EventArgs e)
         {
             openChildForm(new form_about());
         }
 
-        #endregion 
+        #endregion
 
-        private void pic_logo_Click(object sender, EventArgs e)
+
+        #region Logo
+
+        private void Pic_logo_Click(object sender, EventArgs e)
         {
-            removeActiveForm();
+            RemoveActiveForm();
         }
 
-        private void pic_logo_MouseEnter(object sender, EventArgs e)
+        private void Pic_logo_MouseEnter(object sender, EventArgs e)
         {
             pic_logo.BackColor = Color.FromArgb(148, 63, 152);
         }
 
-        private void pic_logo_MouseLeave(object sender, EventArgs e)
+        private void Pic_logo_MouseLeave(object sender, EventArgs e)
         {
             pic_logo.BackColor = Color.Silver;
         }
 
-        private void btn_exit_Click(object sender, EventArgs e)
+        private void Btn_exit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void form_parent_FormClosing(object sender, FormClosingEventArgs e)
+        #endregion
+
+        private void Form_parent_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
             {

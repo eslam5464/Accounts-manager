@@ -254,7 +254,6 @@
             // 
             this.tb_save_password.Location = new System.Drawing.Point(117, 72);
             this.tb_save_password.Name = "tb_save_password";
-            this.tb_save_password.PasswordChar = '•';
             this.tb_save_password.Size = new System.Drawing.Size(300, 20);
             this.tb_save_password.TabIndex = 23;
             // 
