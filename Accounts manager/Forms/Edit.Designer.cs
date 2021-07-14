@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_edit));
             this.panel_edit = new System.Windows.Forms.Panel();
+            this.btn_deleteAcc = new System.Windows.Forms.Button();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.lbl_date_created = new System.Windows.Forms.Label();
             this.lb_edit = new System.Windows.Forms.ListBox();
-            this.tb_timeCreated = new System.Windows.Forms.TextBox();
+            this.tb_dateCreated = new System.Windows.Forms.TextBox();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
             this.lbl_other_info = new System.Windows.Forms.Label();
             this.tb_siteName = new System.Windows.Forms.TextBox();
@@ -55,7 +55,6 @@
             this.btn_save_changes = new System.Windows.Forms.Button();
             this.panel_edit_header = new System.Windows.Forms.Panel();
             this.lbl_edit = new System.Windows.Forms.Label();
-            this.btn_deleteAcc = new System.Windows.Forms.Button();
             this.panel_edit.SuspendLayout();
             this.panel_edit_header.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +66,7 @@
             this.panel_edit.Controls.Add(this.lbl_viewBy);
             this.panel_edit.Controls.Add(this.lbl_date_created);
             this.panel_edit.Controls.Add(this.lb_edit);
-            this.panel_edit.Controls.Add(this.tb_timeCreated);
+            this.panel_edit.Controls.Add(this.tb_dateCreated);
             this.panel_edit.Controls.Add(this.cb_searchBy);
             this.panel_edit.Controls.Add(this.lbl_other_info);
             this.panel_edit.Controls.Add(this.tb_siteName);
@@ -91,6 +90,28 @@
             this.panel_edit.Name = "panel_edit";
             this.panel_edit.Size = new System.Drawing.Size(432, 321);
             this.panel_edit.TabIndex = 40;
+            // 
+            // btn_deleteAcc
+            // 
+            this.btn_deleteAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_deleteAcc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_deleteAcc.FlatAppearance.BorderSize = 0;
+            this.btn_deleteAcc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_deleteAcc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_deleteAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteAcc.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_deleteAcc.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_deleteAcc.Image = ((System.Drawing.Image)(resources.GetObject("btn_deleteAcc.Image")));
+            this.btn_deleteAcc.Location = new System.Drawing.Point(397, 295);
+            this.btn_deleteAcc.Name = "btn_deleteAcc";
+            this.btn_deleteAcc.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_deleteAcc.Size = new System.Drawing.Size(150, 40);
+            this.btn_deleteAcc.TabIndex = 58;
+            this.btn_deleteAcc.Text = " Delete account";
+            this.btn_deleteAcc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_deleteAcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_deleteAcc.UseVisualStyleBackColor = false;
+            this.btn_deleteAcc.Click += new System.EventHandler(this.btn_deleteAcc_Click);
             // 
             // lbl_viewBy
             // 
@@ -117,34 +138,32 @@
             this.lb_edit.Name = "lb_edit";
             this.lb_edit.ScrollAlwaysVisible = true;
             this.lb_edit.Size = new System.Drawing.Size(295, 108);
-            this.lb_edit.Sorted = true;
             this.lb_edit.TabIndex = 37;
             this.lb_edit.SelectedIndexChanged += new System.EventHandler(this.lb_edit_SelectedIndexChanged);
             // 
-            // tb_timeCreated
+            // tb_dateCreated
             // 
-            this.tb_timeCreated.Location = new System.Drawing.Point(424, 136);
-            this.tb_timeCreated.Name = "tb_timeCreated";
-            this.tb_timeCreated.ReadOnly = true;
-            this.tb_timeCreated.Size = new System.Drawing.Size(200, 20);
-            this.tb_timeCreated.TabIndex = 56;
+            this.tb_dateCreated.Location = new System.Drawing.Point(424, 136);
+            this.tb_dateCreated.Name = "tb_dateCreated";
+            this.tb_dateCreated.ReadOnly = true;
+            this.tb_dateCreated.Size = new System.Drawing.Size(200, 20);
+            this.tb_dateCreated.TabIndex = 56;
             // 
             // cb_searchBy
             // 
             this.cb_searchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_searchBy.FormattingEnabled = true;
             this.cb_searchBy.Items.AddRange(new object[] {
-            "Answer",
+            "Site Name",
+            "Username",
             "Email",
-            "Other information",
             "Phone",
             "Question",
-            "Site name",
-            "Username"});
+            "Answer",
+            "Date created"});
             this.cb_searchBy.Location = new System.Drawing.Point(88, 11);
             this.cb_searchBy.Name = "cb_searchBy";
             this.cb_searchBy.Size = new System.Drawing.Size(150, 21);
-            this.cb_searchBy.Sorted = true;
             this.cb_searchBy.TabIndex = 38;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
@@ -320,28 +339,6 @@
             this.lbl_edit.Text = "Edit";
             this.lbl_edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn_deleteAcc
-            // 
-            this.btn_deleteAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btn_deleteAcc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_deleteAcc.FlatAppearance.BorderSize = 0;
-            this.btn_deleteAcc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
-            this.btn_deleteAcc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
-            this.btn_deleteAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_deleteAcc.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btn_deleteAcc.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_deleteAcc.Image = ((System.Drawing.Image)(resources.GetObject("btn_deleteAcc.Image")));
-            this.btn_deleteAcc.Location = new System.Drawing.Point(397, 295);
-            this.btn_deleteAcc.Name = "btn_deleteAcc";
-            this.btn_deleteAcc.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_deleteAcc.Size = new System.Drawing.Size(150, 40);
-            this.btn_deleteAcc.TabIndex = 58;
-            this.btn_deleteAcc.Text = " Delete account";
-            this.btn_deleteAcc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_deleteAcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_deleteAcc.UseVisualStyleBackColor = false;
-            this.btn_deleteAcc.Click += new System.EventHandler(this.btn_deleteAcc_Click);
-            // 
             // form_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,7 +367,7 @@
         private System.Windows.Forms.Label lbl_viewBy;
         private System.Windows.Forms.Label lbl_date_created;
         private System.Windows.Forms.ListBox lb_edit;
-        private System.Windows.Forms.TextBox tb_timeCreated;
+        private System.Windows.Forms.TextBox tb_dateCreated;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Label lbl_other_info;
         private System.Windows.Forms.TextBox tb_siteName;

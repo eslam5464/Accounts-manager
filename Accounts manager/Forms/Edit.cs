@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounts_manager.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Accounts_manager
 {
@@ -16,10 +18,66 @@ namespace Accounts_manager
         public form_edit()
         {
             InitializeComponent();
+            LoadList();
         }
 
-        private string connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\Accounts.mdf;Integrated Security=True";
-        private string selectedAccID = "-1";
+        private List<AccountDetails> accounts, accounts_temp;
+        //private Control selectedControl = null, prevSelectedControl = null;
+        private bool fetchingData = false;
+        private static AccountDetails account;
+        private int lb_selectedIndex, lb_selectedIndexPrev;
+
+        private void LoadList()
+        {
+            accounts_temp = DataAccess.LoadData();
+            accounts = new List<AccountDetails>();
+            lb_edit.DataSource = null;
+
+            foreach (AccountDetails account in accounts_temp)
+            {
+                account.Answer = Methods.Decrypt(account.Answer);
+                account.DateCreated = Methods.Decrypt(account.DateCreated);
+                account.Email = Methods.Decrypt(account.Email);
+                account.OtherInfo = Methods.Decrypt(account.OtherInfo);
+                account.Password = Methods.Decrypt(account.Password);
+                account.Phone = Methods.Decrypt(account.Phone);
+                account.Question = Methods.Decrypt(account.Question);
+                account.SiteName = Methods.Decrypt(account.SiteName);
+                account.Username = Methods.Decrypt(account.Username);
+
+                accounts.Add(account);
+            }
+
+            lb_edit.DataSource = accounts;
+
+            lb_edit.ValueMember = "Id";
+            lb_edit.DisplayMember = "SiteName";
+
+            cb_searchBy.SelectedIndex = 0;
+        }
+
+        private void populateTBs(AccountDetails account)
+        {
+            tb_answer.Text = account.Answer;
+            tb_email.Text = account.Email;
+            tb_otherInfo.Text = account.OtherInfo;
+            tb_password.Text = account.Password;
+            tb_phone.Text = account.Phone;
+            tb_question.Text = account.Question;
+            tb_siteName.Text = account.SiteName;
+            tb_username.Text = account.Username;
+            tb_dateCreated.Text = account.DateCreated;
+        }
+
+        //private void changeSelectedAcc()
+        //{
+        //    fetchingData = true;
+        //    Thread.Sleep(2000);
+        //    account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
+        //    fetchingData = false;
+        //}
+
+        //private string selectedAccID = "-1";
 
         private void form_edit_Load(object sender, EventArgs e)
         {
@@ -35,41 +93,32 @@ namespace Accounts_manager
 
         private void cb_searchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //lb_edit.DataSource = tableBindingSource;
-            lb_edit.DisplayMember = cb_searchBy.SelectedItem.ToString();
+            string selectedItem = cb_searchBy.SelectedItem.ToString();
+            if (selectedItem == "Site Name")
+                selectedItem = "SiteName";
+
+            if (selectedItem == "Date created")
+                selectedItem = "DateCreated";
+
+            lb_edit.ValueMember = "Id";
+            lb_edit.DisplayMember = selectedItem;
         }
 
         private void lb_edit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection connection;
-            SqlCommand cmd;
+            //if (!fetchingData)
+            //    new Thread(new ThreadStart(changeSelectedAcc)).Start();
 
-            string sql = "Select * from dbo.[Table] where" +
-                " [" + cb_searchBy.SelectedItem.ToString() + "] = '" + lb_edit.GetItemText(lb_edit.SelectedItem) + "'";
-
-            connection = new SqlConnection(connetionString);
             try
             {
-                connection.Open();
-                cmd = new SqlCommand(sql, connection);
-
-                int result = cmd.ExecuteNonQuery();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                if (lb_edit.SelectedValue != null && account != null)
                 {
-                    tb_answer.Text = reader["Answer"].ToString();
-                    tb_email.Text = reader["Email"].ToString();
-                    tb_otherInfo.Text = reader["Other information"].ToString();
-                    tb_password.Text = reader["Password"].ToString();
-                    tb_phone.Text = reader["Phone"].ToString();
-                    tb_question.Text = reader["Question"].ToString();
-                    tb_siteName.Text = reader["Site name"].ToString();
-                    tb_timeCreated.Text = reader["Time created"].ToString();
-                    tb_username.Text = reader["Username"].ToString();
-                    selectedAccID = reader["Id"].ToString();
-                }
+                    var account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
 
-                connection.Close();
+                    Debug.WriteLine($"-> selected account with id: {account.Id}");
+                    populateTBs(account);
+
+                }
             }
             catch (Exception ex)
             {
@@ -77,7 +126,7 @@ namespace Accounts_manager
             }
         }
 
-        private void btn_save_changes_Click(object sender, EventArgs e)
+        private void btn_save_changes_Click(object sender, EventArgs e)// to do
         {
             if (lb_edit.SelectedIndex != -1)
             {
@@ -85,28 +134,8 @@ namespace Accounts_manager
 
                 if (result == DialogResult.Yes)
                 {
-                    SqlConnection connection;
-                    SqlCommand cmd;
+                    var account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
 
-                    string sql = string.Format("UPDATE dbo.[Table] set [Site name] = '{1}', Username = '{2}'," +
-                        "Password = '{3}', Email = '{4}', Phone = '{5}', Question = '{6}', Answer = '{7}'," +
-                        "[Other information] = '{8}' where Id = '{0}'", selectedAccID, tb_siteName.Text, tb_username.Text,
-                        tb_password.Text, tb_email.Text, int.Parse(tb_phone.Text), tb_question.Text, tb_answer.Text, tb_otherInfo.Text);
-
-                    connection = new SqlConnection(connetionString);
-                    try
-                    {
-                        connection.Open();
-                        cmd = new SqlCommand(sql, connection);
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        connection.Close();
-                        Debug.WriteLine("row " + selectedAccID + " changed in the database");
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
                 }
             }
         }
@@ -118,34 +147,20 @@ namespace Accounts_manager
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this account?", "Alarm!.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    //Debug.WriteLine("start index :" + lb_edit_selectedIndex);
-                    SqlConnection connection;
-                    SqlCommand cmd;
-
-                    string sql = string.Format("delete from dbo.[Table] where Id = '" + selectedAccID + "'");
-
-                    connection = new SqlConnection(connetionString);
                     try
                     {
-                        connection.Open();
-                        cmd = new SqlCommand(sql, connection);
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        connection.Close();
-                        Debug.WriteLine("row " + selectedAccID + " deleted in the database");
+                        var account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
+                        DataAccess.DeleteAccount(account);
+
+                        if (lb_edit.SelectedIndex > -1)
+                            lb_edit.SelectedIndex--;
+
+                        LoadList();
                     }
                     catch (Exception ex)
                     {
                         Debug.WriteLine(ex.Message);
                     }
-
-                    //lb_edit.SelectedIndex = lb_edit_selectedIndex - 1;
-                    int lastSelectedIndex = lb_edit.SelectedIndex;
-
-                    lb_edit.Refresh();
-                    lb_edit.SelectedIndex = lastSelectedIndex - 1;
-
-                    Debug.WriteLine("" + lb_edit.SelectedIndex);
                 }
 
                 if (lb_edit.Items.Count == 0)
@@ -153,7 +168,7 @@ namespace Accounts_manager
                     tb_siteName.Text = ""; tb_username.Text = "";
                     tb_password.Text = ""; tb_email.Text = ""; tb_phone.Text = "";
                     tb_question.Text = ""; tb_answer.Text = ""; tb_otherInfo.Text = "";
-                    tb_timeCreated.Text = "";
+                    tb_dateCreated.Text = "";
                 }
             }
         }

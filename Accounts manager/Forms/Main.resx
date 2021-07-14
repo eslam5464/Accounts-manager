@@ -126,7 +126,12 @@
         gHdDXN38fskb4N0QVze/X/IG2d2N+sAIZS8yeVbRnYtMUQStnfc4//AnSIGtAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="tableBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>117, 17</value>
-  </metadata>
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAKRJREFUWEft
+        jkEKwCAQxPy4b2+hrCBTy8RtoZcN7MlMsBWF0ns/3lxk8qyiOxeZPNnQ7x/4DPeB8Z69yDzjxDmWucg8
+        40QcEvDOiTgk4J0TcUjAOyfikIB3TsQhAe+ciEMC3jkRhwS8cyIOCXjnRBwS8M6JOCTgnRNxSMA7J+KQ
+        gHdDXN38fskb4N0QVze/X/IG2d2N+sAIZS8yeVbRnYtMUQStnfc4//AnSIGtAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

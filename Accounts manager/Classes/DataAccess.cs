@@ -48,6 +48,18 @@ namespace Accounts_manager.Classes
             }
         }
 
+        public static void DeleteAccount(AccountDetails account)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Accounts where Id = @Id ", account);
+
+                string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
+
+                Debug.WriteLine($"-> At: {DateNow} - Deleted account Id= {account.Id}, created in: {account.DateCreated}");
+            }
+        }
+
         private static string LoadConnectionString(string id = "Default")
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings[id].ConnectionString;

@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Accounts_manager
 {
     public partial class form_parent : Form
     {
-        //private readonly Methods methods = new Methods();// db pass problem
+        Button btn_selected, btn_selectedPrev = new Button();
 
         public form_parent()
         {
@@ -60,6 +61,34 @@ namespace Accounts_manager
             }
         }
 
+        private void CheckSelectedButton(Button SelectedButton)
+        {
+            if (btn_selected == null && btn_selectedPrev == null)
+            {
+                btn_selected = SelectedButton;
+                Debug.WriteLine($"-> both null");
+            }
+            else
+            {
+                btn_selectedPrev = btn_selected;
+                btn_selected = SelectedButton;
+
+                if (btn_selectedPrev != null)
+                    btn_selectedPrev.BackColor = Color.FromArgb(51, 47, 57);
+                btn_selected.BackColor = Color.FromArgb(98, 42, 101);
+
+                Debug.WriteLine($"-> btn selected: {btn_selected.BackColor}, btn prev: {btn_selected.BackColor}");
+            }
+            //else
+            //{
+
+            //    //btn_selectedPrev.BackColor = Color.FromArgb(51, 47, 57);
+            //    //btn_selected.BackColor = Color.FromArgb(51, 47, 57);
+            //    //btn_selected = btn_selectedPrev = null;
+            //    //Debug.WriteLine($"else statement");
+            //}
+        }
+
         private void Form_parent_Load(object sender, EventArgs e)
         {
             //new Thread(() => methods.ConnectDB()).Start();
@@ -87,35 +116,41 @@ namespace Accounts_manager
 
         #endregion
 
-        //public string Methods_checkpass(string Password)
-        //{
-        //    return methods.CheckPass(Password);
-        //}
-
-        //public void methods_createDB(string Password)
-        //{
-        //    methods.CreateDB(Password);
-        //}
-
         #region Side menu buttons
         private void Btn_main_Click(object sender, EventArgs e)
         {
             openChildForm(new form_main());
+            CheckSelectedButton(btn_main);
+
+            if (btn_selected != null && btn_selectedPrev != null)
+                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
         }
 
         private void Btn_save_Click(object sender, EventArgs e)
         {
             openChildForm(new form_save());
+            CheckSelectedButton(btn_save);
+
+            if (btn_selected != null && btn_selectedPrev != null)
+                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name }");
         }
 
         private void Btn_edit_Click(object sender, EventArgs e)
         {
             openChildForm(new form_edit());
+            CheckSelectedButton(btn_edit);
+
+            if (btn_selected != null && btn_selectedPrev != null)
+                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
         }
 
         private void Btn_about_Click(object sender, EventArgs e)
         {
             openChildForm(new form_about());
+            CheckSelectedButton(btn_about);
+
+            if (btn_selected != null && btn_selectedPrev != null)
+                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
         }
 
         #endregion

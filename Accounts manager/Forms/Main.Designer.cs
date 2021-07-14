@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_main));
             this.lb_main = new System.Windows.Forms.ListBox();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
@@ -55,10 +54,9 @@
             this.panel_main_header = new System.Windows.Forms.Panel();
             this.lbl_main = new System.Windows.Forms.Label();
             this.panel_main = new System.Windows.Forms.Panel();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel_main_header.SuspendLayout();
             this.panel_main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_main
@@ -308,6 +306,7 @@
             // panel_main
             // 
             this.panel_main.AutoScroll = true;
+            this.panel_main.Controls.Add(this.button1);
             this.panel_main.Controls.Add(this.btn_copy_control_txt);
             this.panel_main.Controls.Add(this.lbl_viewBy);
             this.panel_main.Controls.Add(this.lbl_date_created);
@@ -336,6 +335,28 @@
             this.panel_main.Size = new System.Drawing.Size(432, 321);
             this.panel_main.TabIndex = 38;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(248, 6);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(150, 40);
+            this.button1.TabIndex = 37;
+            this.button1.Text = " Copy selected";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,7 +373,6 @@
             this.panel_main_header.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,7 +380,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox lb_main;
-        private System.Windows.Forms.BindingSource tableBindingSource;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Label lbl_viewBy;
         private System.Windows.Forms.TextBox tb_siteName;
@@ -385,5 +404,6 @@
         private System.Windows.Forms.Panel panel_main_header;
         private System.Windows.Forms.Label lbl_main;
         private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.Button button1;
     }
 }

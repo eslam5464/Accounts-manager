@@ -12,7 +12,6 @@ namespace Accounts_manager
         public form_main()
         {
             InitializeComponent();
-            LoadList();
         }
 
         private List<AccountDetails> accounts, accounts_temp;
@@ -21,7 +20,7 @@ namespace Accounts_manager
         private void LoadList()
         {
             accounts_temp = DataAccess.LoadData();
-            accounts= new List<AccountDetails>();
+            accounts = new List<AccountDetails>();
             lb_main.DataSource = null;
 
             foreach (AccountDetails account in accounts_temp)
@@ -49,9 +48,9 @@ namespace Accounts_manager
 
         private void form_main_Load(object sender, EventArgs e)
         {
-            lbl_main.Font = new Font("Microsoft Sans Serif", Height / 30, FontStyle.Regular);
-            panel_main_header.Height = Height / 15;
-
+            //lbl_main.Font = new Font("Microsoft Sans Serif", Height / 30, FontStyle.Regular);
+            //panel_main_header.Height = Height / 15;
+            LoadList();
         }
 
         private void cb_searchBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,29 +64,36 @@ namespace Accounts_manager
 
             lb_main.ValueMember = "Id";
             lb_main.DisplayMember = selectedItem;
+
+            Debug.WriteLine($"-> cb_searchBy index changed to {cb_searchBy.SelectedIndex}");
         }
 
         private void populateTBs(AccountDetails account)
         {
-            tb_answer.Text = account.Answer;
-            tb_email.Text = account.Email;
-            tb_otherInfo.Text = account.OtherInfo;
-            tb_password.Text = account.Password;
-            tb_phone.Text = account.Phone;
-            tb_question.Text = account.Question;
-            tb_siteName.Text = account.SiteName;
-            tb_username.Text = account.Username;
-            tb_dateCreated.Text = account.DateCreated;
+            if (account != null)
+            {
+                tb_answer.Text = account.Answer;
+                tb_email.Text = account.Email;
+                tb_otherInfo.Text = account.OtherInfo;
+                tb_password.Text = account.Password;
+                tb_phone.Text = account.Phone;
+                tb_question.Text = account.Question;
+                tb_siteName.Text = account.SiteName;
+                tb_username.Text = account.Username;
+                tb_dateCreated.Text = account.DateCreated;
+            }
         }
 
         private void lb_main_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));
-                Debug.WriteLine($"-> selected account with id: {account.Id}");
 
+                var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));
+                if (account != null)
+                    Debug.WriteLine($"-> selected account with id: {account.Id}");
                 populateTBs(account);
+
             }
             catch (Exception ex)
             {
@@ -99,6 +105,11 @@ namespace Accounts_manager
         {
             if (selectedControl != null)
                 Clipboard.SetText(selectedControl.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //LoadList();
         }
 
         private void form_main_Resize(object sender, EventArgs e)
