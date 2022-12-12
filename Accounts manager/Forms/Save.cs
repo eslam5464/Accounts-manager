@@ -35,7 +35,7 @@ namespace Accounts_manager
 
         private void btn_save_addData_Click(object sender, EventArgs e)
         {
-            AccountDetails account = new AccountDetails();
+            AccountModel account = new AccountModel();
 
             if (tb_save_siteName.Text != "")
             {

@@ -15,5 +15,10 @@ namespace Accounts_manager
         {
             InitializeComponent();
         }
+
+        private void form_about_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

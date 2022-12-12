@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Accounts_manager.Classes
+﻿namespace Accounts_manager.Classes
 {
-    public class AccountDetails
+    public class AccountModel
     {
         public int Id { get; set; }
         public string SiteName { get; set; }

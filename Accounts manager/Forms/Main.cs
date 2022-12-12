@@ -14,16 +14,16 @@ namespace Accounts_manager
             InitializeComponent();
         }
 
-        private List<AccountDetails> accounts, accounts_temp;
+        private List<AccountModel> accounts, accounts_temp;
         private Control selectedControl = null, prevSelectedControl = null;
 
         private void LoadList()
         {
             accounts_temp = DataAccess.LoadData();
-            accounts = new List<AccountDetails>();
+            accounts = new List<AccountModel>();
             lb_main.DataSource = null;
 
-            foreach (AccountDetails account in accounts_temp)
+            foreach (AccountModel account in accounts_temp)
             {
                 account.Answer = Methods.Decrypt(account.Answer);
                 account.DateCreated = Methods.Decrypt(account.DateCreated);
@@ -68,7 +68,7 @@ namespace Accounts_manager
             Debug.WriteLine($"-> cb_searchBy index changed to {cb_searchBy.SelectedIndex}");
         }
 
-        private void populateTBs(AccountDetails account)
+        private void populateTBs(AccountModel account)
         {
             if (account != null)
             {

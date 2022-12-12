@@ -49,7 +49,7 @@ namespace Accounts_manager
 
         public bool checkMasterKey(string MasterKey)
         {
-            string output = "Welcome to the DB";
+            //string output = "Welcome to the DB";
 
 
 

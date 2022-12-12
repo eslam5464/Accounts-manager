@@ -12,18 +12,18 @@ namespace Accounts_manager.Classes
 {
     class DataAccess
     {
-        public static List<AccountDetails> LoadData()
+        public static List<AccountModel> LoadData()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<AccountDetails>("select * from Accounts", new DynamicParameters());
+                var output = cnn.Query<AccountModel>("select * from Accounts", new DynamicParameters());
 
                 Debug.WriteLine($"-> Loaded all data from Accounts");
                 return output.ToList();
             }
         }
 
-        public static void AddAccount(AccountDetails account)
+        public static void AddAccount(AccountModel account)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -34,7 +34,7 @@ namespace Accounts_manager.Classes
             }
         }
 
-        public static void EditAccount(AccountDetails account)
+        public static void EditAccount(AccountModel account)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -48,7 +48,7 @@ namespace Accounts_manager.Classes
             }
         }
 
-        public static void DeleteAccount(AccountDetails account)
+        public static void DeleteAccount(AccountModel account)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {

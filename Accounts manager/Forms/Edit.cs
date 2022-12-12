@@ -21,19 +21,19 @@ namespace Accounts_manager
             LoadList();
         }
 
-        private List<AccountDetails> accounts, accounts_temp;
+        private List<AccountModel> accounts, accounts_temp;
         //private Control selectedControl = null, prevSelectedControl = null;
         private bool fetchingData = false;
-        private static AccountDetails account;
+        private static AccountModel account;
         private int lb_selectedIndex, lb_selectedIndexPrev;
 
         private void LoadList()
         {
             accounts_temp = DataAccess.LoadData();
-            accounts = new List<AccountDetails>();
+            accounts = new List<AccountModel>();
             lb_edit.DataSource = null;
 
-            foreach (AccountDetails account in accounts_temp)
+            foreach (AccountModel account in accounts_temp)
             {
                 account.Answer = Methods.Decrypt(account.Answer);
                 account.DateCreated = Methods.Decrypt(account.DateCreated);
@@ -56,7 +56,7 @@ namespace Accounts_manager
             cb_searchBy.SelectedIndex = 0;
         }
 
-        private void populateTBs(AccountDetails account)
+        private void populateTBs(AccountModel account)
         {
             tb_answer.Text = account.Answer;
             tb_email.Text = account.Email;

@@ -84,7 +84,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AccountDetails.cs" />
+    <Compile Include="Classes\AccountModel.cs" />
     <Compile Include="Classes\DataAccess.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
