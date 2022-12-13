@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using Dapper;
 using System.Diagnostics;
+using Accounts_manager.Classes.Models;
 
 namespace Accounts_manager.Classes
 {
@@ -42,7 +43,7 @@ namespace Accounts_manager.Classes
                     " 'Email'= @Email, 'Phone'= @Phone, 'Question'= @Question, 'Answer'= @Answer, 'OtherInfo'= @OtherInfo" +
                     "where Id = @Id ", account);
 
-                string DateNow= DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
+                string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
 
                 Debug.WriteLine($"-> At: {DateNow} - Updated account Id= {account.Id}, created in: {account.DateCreated}");
             }

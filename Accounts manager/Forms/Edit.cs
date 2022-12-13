@@ -1,4 +1,5 @@
-﻿using Accounts_manager.Classes;
+﻿using Accounts_manager.Classes.Models;
+using Accounts_manager.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

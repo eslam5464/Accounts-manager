@@ -1,4 +1,4 @@
-﻿namespace Accounts_manager.Classes
+﻿namespace Accounts_manager.Classes.Models
 {
     public class AccountModel
     {

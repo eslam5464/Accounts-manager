@@ -39,12 +39,9 @@
             this.pic_logo = new System.Windows.Forms.PictureBox();
             this.panel_splitSideMenu = new System.Windows.Forms.Panel();
             this.panel_childForm = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_leftMenu.SuspendLayout();
             this.panel_logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
-            this.panel_childForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_leftMenu
@@ -213,23 +210,11 @@
             // panel_childForm
             // 
             this.panel_childForm.BackColor = System.Drawing.Color.Silver;
-            this.panel_childForm.Controls.Add(this.pictureBox1);
             this.panel_childForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_childForm.Location = new System.Drawing.Point(152, 0);
             this.panel_childForm.Name = "panel_childForm";
             this.panel_childForm.Size = new System.Drawing.Size(448, 400);
             this.panel_childForm.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(50, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(333, 333);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // form_parent
             // 
@@ -248,8 +233,6 @@
             this.panel_leftMenu.ResumeLayout(false);
             this.panel_logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
-            this.panel_childForm.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,7 +249,6 @@
         private System.Windows.Forms.Panel panel_splitSideMenu;
         private System.Windows.Forms.Panel panel_childForm;
         private System.Windows.Forms.Button btn_exit;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

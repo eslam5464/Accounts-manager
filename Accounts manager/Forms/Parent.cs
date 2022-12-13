@@ -15,6 +15,9 @@ namespace Accounts_manager
     public partial class form_parent : Form
     {
         Button btn_selected, btn_selectedPrev = new Button();
+        private readonly UserControls.Main uc_main = new UserControls.Main();
+        private readonly UserControls.Blank uc_blank = new UserControls.Blank();
+        private readonly UserControls.Save uc_save = new UserControls.Save();
 
         public form_parent()
         {
@@ -50,6 +53,7 @@ namespace Accounts_manager
                 childForm.Show();
             }
         }
+
         private void RemoveActiveForm()
         {
             if (activeForm != null)
@@ -59,6 +63,35 @@ namespace Accounts_manager
                 panel_childForm.Tag = null;
                 activeForm = null;
             }
+        }
+
+        //private void SelectButton(Button SelectedButton, bool HideAllSubMenus)
+        //{
+        //    LogModel log = new LogModel
+        //    {
+        //        ClassName = this.Name,
+        //        LogLevel = Logger.INFO,
+        //        LogMessage = $"User clicked on <{SelectedButton.Name}> button",
+        //        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+        //    };
+        //    Logger.Log(log);
+
+        //    if (!pan_left_btn_click.Visible)
+        //        pan_left_btn_click.Visible = true;
+
+        //    if (HideAllSubMenus)
+        //        HideSubMenu();
+
+        //    pan_left_btn_click.Height = SelectedButton.Height;
+        //    pan_left_btn_click.Top = SelectedButton.Top;
+        //}
+
+
+        private void ShowControl(UserControl userControl)
+        {
+            //userControl.Anchor =;
+            userControl.Dock = DockStyle.Fill;
+            userControl.BringToFront();
         }
 
         private void CheckSelectedButton(Button SelectedButton)
@@ -110,6 +143,19 @@ namespace Accounts_manager
                 this.Location = new Point(10, 10);
             }
 
+            UserControl[] AllUserControls = {
+                uc_main,
+                uc_blank,
+                uc_save,
+                //uc_edit,
+                //uc_remove,
+            };
+
+            foreach (UserControl userControl in AllUserControls)
+                panel_childForm.Controls.Add(userControl);
+
+            uc_blank.BringToFront();
+
             form_dbPass frm = new form_dbPass();
             frm.ShowDialog();
         }
@@ -119,7 +165,8 @@ namespace Accounts_manager
         #region Side menu buttons
         private void Btn_main_Click(object sender, EventArgs e)
         {
-            openChildForm(new form_main());
+            ShowControl(uc_main);
+            //openChildForm(new form_main());
             CheckSelectedButton(btn_main);
 
             if (btn_selected != null && btn_selectedPrev != null)
@@ -128,7 +175,8 @@ namespace Accounts_manager
 
         private void Btn_save_Click(object sender, EventArgs e)
         {
-            openChildForm(new form_save());
+            //openChildForm(new form_save());
+            ShowControl(uc_save);
             CheckSelectedButton(btn_save);
 
             if (btn_selected != null && btn_selectedPrev != null)
