@@ -116,7 +116,7 @@ namespace Accounts_manager.UserControls
             this.tb_save_otherInfo.Location = new System.Drawing.Point(3, 185);
             this.tb_save_otherInfo.Multiline = true;
             this.tb_save_otherInfo.Name = "tb_save_otherInfo";
-            this.tb_save_otherInfo.Size = new System.Drawing.Size(342, 95);
+            this.tb_save_otherInfo.Size = new System.Drawing.Size(335, 95);
             this.tb_save_otherInfo.TabIndex = 52;
             // 
             // lbl_other_info
@@ -138,7 +138,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_answer.Location = new System.Drawing.Point(3, 159);
             this.tb_save_answer.Name = "tb_save_answer";
-            this.tb_save_answer.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_answer.Size = new System.Drawing.Size(335, 20);
             this.tb_save_answer.TabIndex = 50;
             // 
             // lbl_answer
@@ -160,7 +160,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_question.Location = new System.Drawing.Point(3, 133);
             this.tb_save_question.Name = "tb_save_question";
-            this.tb_save_question.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_question.Size = new System.Drawing.Size(335, 20);
             this.tb_save_question.TabIndex = 48;
             // 
             // lbl_question
@@ -182,7 +182,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_phone.Location = new System.Drawing.Point(3, 107);
             this.tb_save_phone.Name = "tb_save_phone";
-            this.tb_save_phone.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_phone.Size = new System.Drawing.Size(335, 20);
             this.tb_save_phone.TabIndex = 46;
             // 
             // lbl_phone
@@ -204,7 +204,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_email.Location = new System.Drawing.Point(3, 81);
             this.tb_save_email.Name = "tb_save_email";
-            this.tb_save_email.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_email.Size = new System.Drawing.Size(335, 20);
             this.tb_save_email.TabIndex = 44;
             // 
             // lbl_email
@@ -226,7 +226,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_password.Location = new System.Drawing.Point(3, 55);
             this.tb_save_password.Name = "tb_save_password";
-            this.tb_save_password.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_password.Size = new System.Drawing.Size(335, 20);
             this.tb_save_password.TabIndex = 42;
             // 
             // lbl_password
@@ -248,7 +248,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_username.Location = new System.Drawing.Point(3, 29);
             this.tb_save_username.Name = "tb_save_username";
-            this.tb_save_username.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_username.Size = new System.Drawing.Size(335, 20);
             this.tb_save_username.TabIndex = 40;
             // 
             // lbl_username
@@ -271,7 +271,7 @@ namespace Accounts_manager.UserControls
             this.tb_save_siteName.BackColor = System.Drawing.SystemColors.Window;
             this.tb_save_siteName.Location = new System.Drawing.Point(3, 3);
             this.tb_save_siteName.Name = "tb_save_siteName";
-            this.tb_save_siteName.Size = new System.Drawing.Size(342, 20);
+            this.tb_save_siteName.Size = new System.Drawing.Size(335, 20);
             this.tb_save_siteName.TabIndex = 38;
             // 
             // lbl_siteName
@@ -289,8 +289,8 @@ namespace Accounts_manager.UserControls
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.16183F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.83817F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 1);
@@ -300,8 +300,6 @@ namespace Accounts_manager.UserControls
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.9805F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.0195F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 400);
             this.tableLayoutPanel1.TabIndex = 55;
             // 
@@ -318,7 +316,7 @@ namespace Accounts_manager.UserControls
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(88, 285);
+            this.panel1.Size = new System.Drawing.Size(95, 285);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -332,18 +330,18 @@ namespace Accounts_manager.UserControls
             this.panel2.Controls.Add(this.tb_save_phone);
             this.panel2.Controls.Add(this.tb_save_question);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(97, 3);
+            this.panel2.Location = new System.Drawing.Point(104, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(348, 285);
+            this.panel2.Size = new System.Drawing.Size(341, 285);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tableLayoutPanel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(97, 294);
+            this.panel3.Location = new System.Drawing.Point(104, 294);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(348, 103);
+            this.panel3.Size = new System.Drawing.Size(341, 103);
             this.panel3.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -358,7 +356,7 @@ namespace Accounts_manager.UserControls
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(348, 103);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 103);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel5
@@ -367,16 +365,16 @@ namespace Accounts_manager.UserControls
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(139, 97);
+            this.panel5.Size = new System.Drawing.Size(136, 97);
             this.panel5.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_save_clearTB);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(148, 3);
+            this.panel6.Location = new System.Drawing.Point(145, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(197, 97);
+            this.panel6.Size = new System.Drawing.Size(193, 97);
             this.panel6.TabIndex = 1;
             // 
             // Save

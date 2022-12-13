@@ -23,11 +23,6 @@ namespace Accounts_manager.UserControls
             InitializeComponent();
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-            LoadAccounts();
-        }
-
         private void cb_searchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = cb_searchBy.SelectedItem.ToString();
@@ -45,34 +40,34 @@ namespace Accounts_manager.UserControls
             {
                 ClassName = this.GetType().Name,
                 LogLevel = Logger.INFO,
-                LogMessage = $"<{((ComboBox)sender).Name}> index changed to {cb_searchBy.Text}",
+                LogMessage = $"<{((ComboBox)sender).Name}> index changed to '{cb_searchBy.Text}'",
                 MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
             });
         }
 
-        private void LoadAccounts()
+        public async void LoadAccounts()
         {
             accounts_temp = DataAccess.LoadData();
             accounts = new List<AccountModel>();
             lb_main.DataSource = null;
+            lb_main.Items.Add("Please wait for the list to load...");
 
             foreach (AccountModel account in accounts_temp)
             {
-                account.Answer = Methods.Decrypt(account.Answer);
-                account.DateCreated = Methods.Decrypt(account.DateCreated);
-                account.Email = Methods.Decrypt(account.Email);
-                account.OtherInfo = Methods.Decrypt(account.OtherInfo);
-                account.Password = Methods.Decrypt(account.Password);
-                account.Phone = Methods.Decrypt(account.Phone);
-                account.Question = Methods.Decrypt(account.Question);
-                account.SiteName = Methods.Decrypt(account.SiteName);
-                account.Username = Methods.Decrypt(account.Username);
+                account.Answer = await Task.Run(() => Methods.Decrypt(account.Answer));
+                account.DateCreated = await Task.Run(() => Methods.Decrypt(account.DateCreated));
+                account.Email = await Task.Run(() => Methods.Decrypt(account.Email));
+                account.OtherInfo = await Task.Run(() => Methods.Decrypt(account.OtherInfo));
+                account.Password = await Task.Run(() => Methods.Decrypt(account.Password));
+                account.Phone = await Task.Run(() => Methods.Decrypt(account.Phone));
+                account.Question = await Task.Run(() => Methods.Decrypt(account.Question));
+                account.SiteName = await Task.Run(() => Methods.Decrypt(account.SiteName));
+                account.Username = await Task.Run(() => Methods.Decrypt(account.Username));
 
-                accounts.Add(account);
+                await Task.Run(() => accounts.Add(account));
             }
 
             lb_main.DataSource = accounts;
-
             lb_main.ValueMember = "Id";
             lb_main.DisplayMember = "SiteName";
 
@@ -102,7 +97,7 @@ namespace Accounts_manager.UserControls
                 {
                     ClassName = this.GetType().Name,
                     LogLevel = Logger.ERROR,
-                    LogMessage = $"{ex.Message}",
+                    LogMessage = $"while selecting index in listbox main & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }

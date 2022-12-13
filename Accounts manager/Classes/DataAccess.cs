@@ -37,14 +37,6 @@ namespace Accounts_manager.Classes
             {
                 cnn.Execute("insert into Accounts ('SiteName', 'Username', 'Password', 'Email', 'Phone', 'Question', 'Answer', 'OtherInfo', 'DateCreated') " +
                     "values (@SiteName, @Username, @Password, @Email, @Phone, @Question, @Answer, @OtherInfo, @DateCreated)", account);
-
-                Logger.Log(new LogModel()
-                {
-                    ClassName = "DataAccess",
-                    LogLevel = Logger.INFO,
-                    LogMessage = $"Added an account",
-                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
-                });
             }
         }
 

@@ -430,7 +430,6 @@ namespace Accounts_manager.UserControls
             this.MinimumSize = new System.Drawing.Size(448, 400);
             this.Name = "Main";
             this.Size = new System.Drawing.Size(448, 400);
-            this.Load += new System.EventHandler(this.Main_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

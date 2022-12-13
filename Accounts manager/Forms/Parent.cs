@@ -96,7 +96,7 @@ namespace Accounts_manager
             userControl.BringToFront();
         }
 
-        private void CheckSelectedButton(Button SelectedButton)
+        private void SetSelectedButton(Button SelectedButton)
         {
             if (btn_selected == null && btn_selectedPrev == null)
             {
@@ -181,27 +181,21 @@ namespace Accounts_manager
         private void Btn_main_Click(object sender, EventArgs e)
         {
             ShowControl(uc_main);
-            //openChildForm(new form_main());
-            CheckSelectedButton(btn_main);
+            SetSelectedButton(btn_main);
 
-            if (btn_selected != null && btn_selectedPrev != null)
-                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
+            uc_main.LoadAccounts();
         }
 
         private void Btn_save_Click(object sender, EventArgs e)
         {
-            //openChildForm(new form_save());
             ShowControl(uc_save);
-            CheckSelectedButton(btn_save);
-
-            if (btn_selected != null && btn_selectedPrev != null)
-                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name }");
+            SetSelectedButton(btn_save);
         }
 
         private void Btn_edit_Click(object sender, EventArgs e)
         {
             openChildForm(new form_edit());
-            CheckSelectedButton(btn_edit);
+            SetSelectedButton(btn_edit);
 
             if (btn_selected != null && btn_selectedPrev != null)
                 Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
@@ -210,7 +204,7 @@ namespace Accounts_manager
         private void Btn_about_Click(object sender, EventArgs e)
         {
             openChildForm(new form_about());
-            CheckSelectedButton(btn_about);
+            SetSelectedButton(btn_about);
 
             if (btn_selected != null && btn_selectedPrev != null)
                 Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
