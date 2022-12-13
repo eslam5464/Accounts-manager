@@ -89,7 +89,6 @@ namespace Accounts_manager
         {
             try
             {
-
                 var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));
                 if (account != null)
                     Debug.WriteLine($"-> selected account with id: {account.Id}");

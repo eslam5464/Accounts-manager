@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
+using Accounts_manager.Classes;
+using Accounts_manager.Classes.Models;
 
 namespace Accounts_manager
 {
@@ -99,7 +101,14 @@ namespace Accounts_manager
             if (btn_selected == null && btn_selectedPrev == null)
             {
                 btn_selected = SelectedButton;
-                Debug.WriteLine($"-> both null");
+
+                Logger.Log(new LogModel()
+                {
+                    ClassName = this.GetType().Name,
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"<{btn_selected.Name}> and <{btn_selectedPrev.Name}> are null",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
             else
             {
@@ -110,7 +119,13 @@ namespace Accounts_manager
                     btn_selectedPrev.BackColor = Color.FromArgb(51, 47, 57);
                 btn_selected.BackColor = Color.FromArgb(98, 42, 101);
 
-                Debug.WriteLine($"-> btn selected: {btn_selected.BackColor}, btn prev: {btn_selected.BackColor}");
+                Logger.Log(new LogModel()
+                {
+                    ClassName = this.GetType().Name,
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"Button selected: <{btn_selected.Name}>, button previous: <{btn_selected.Name}>",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
             //else
             //{

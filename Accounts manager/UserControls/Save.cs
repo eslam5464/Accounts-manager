@@ -16,5 +16,15 @@ namespace Accounts_manager.UserControls
         {
             InitializeComponent();
         }
+
+        private void btn_save_addData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_save_clearTB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

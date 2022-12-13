@@ -64,7 +64,7 @@ namespace Accounts_manager.Classes
                 using (IDbConnection cnn = new SQLiteConnection(GlobalVars.LoadConnectionString()))
                 {
                     string query = $"INSERT INTO 'main'.'Log' ('Date', 'MethodName', 'ClassName', 'LogLevel', 'LogMessage') VALUES " +
-                            $"(@Date, @MethodName, @LogLevel, @ClassName, @LogMessage)";
+                            $"(@Date, @MethodName, @ClassName, @LogLevel, @LogMessage)";
 
                     cnn.Query<LogModel>(query, logModel);
                 }

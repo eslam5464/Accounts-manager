@@ -41,6 +41,7 @@ namespace Accounts_manager.UserControls
             this.tb_answer = new System.Windows.Forms.TextBox();
             this.lbl_answer = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_copy_control_txt = new System.Windows.Forms.Button();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
             this.tb_email = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@ namespace Accounts_manager.UserControls
             this.lb_main = new System.Windows.Forms.ListBox();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
-            this.btn_copy_control_txt = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -108,6 +108,7 @@ namespace Accounts_manager.UserControls
             this.tb_phone.ReadOnly = true;
             this.tb_phone.Size = new System.Drawing.Size(96, 20);
             this.tb_phone.TabIndex = 11;
+            this.tb_phone.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_phone
             // 
@@ -131,6 +132,7 @@ namespace Accounts_manager.UserControls
             this.tb_question.ReadOnly = true;
             this.tb_question.Size = new System.Drawing.Size(96, 20);
             this.tb_question.TabIndex = 13;
+            this.tb_question.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_date_created
             // 
@@ -166,6 +168,7 @@ namespace Accounts_manager.UserControls
             this.tb_dateCreated.ReadOnly = true;
             this.tb_dateCreated.Size = new System.Drawing.Size(96, 20);
             this.tb_dateCreated.TabIndex = 19;
+            this.tb_dateCreated.Click += new System.EventHandler(this.tbs_main);
             // 
             // tb_answer
             // 
@@ -177,6 +180,7 @@ namespace Accounts_manager.UserControls
             this.tb_answer.ReadOnly = true;
             this.tb_answer.Size = new System.Drawing.Size(96, 20);
             this.tb_answer.TabIndex = 15;
+            this.tb_answer.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_answer
             // 
@@ -207,6 +211,28 @@ namespace Accounts_manager.UserControls
             this.panel4.Size = new System.Drawing.Size(217, 200);
             this.panel4.TabIndex = 2;
             // 
+            // btn_copy_control_txt
+            // 
+            this.btn_copy_control_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_copy_control_txt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_copy_control_txt.FlatAppearance.BorderSize = 0;
+            this.btn_copy_control_txt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_copy_control_txt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_copy_control_txt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_copy_control_txt.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_copy_control_txt.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_copy_control_txt.Image = ((System.Drawing.Image)(resources.GetObject("btn_copy_control_txt.Image")));
+            this.btn_copy_control_txt.Location = new System.Drawing.Point(70, 131);
+            this.btn_copy_control_txt.Name = "btn_copy_control_txt";
+            this.btn_copy_control_txt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_copy_control_txt.Size = new System.Drawing.Size(150, 40);
+            this.btn_copy_control_txt.TabIndex = 36;
+            this.btn_copy_control_txt.Text = " Copy selected";
+            this.btn_copy_control_txt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_copy_control_txt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_copy_control_txt.UseVisualStyleBackColor = false;
+            this.btn_copy_control_txt.Click += new System.EventHandler(this.btn_copy_control_txt_Click);
+            // 
             // tb_password
             // 
             this.tb_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -218,6 +244,7 @@ namespace Accounts_manager.UserControls
             this.tb_password.ReadOnly = true;
             this.tb_password.Size = new System.Drawing.Size(110, 20);
             this.tb_password.TabIndex = 7;
+            this.tb_password.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_email
             // 
@@ -241,6 +268,7 @@ namespace Accounts_manager.UserControls
             this.tb_email.ReadOnly = true;
             this.tb_email.Size = new System.Drawing.Size(110, 20);
             this.tb_email.TabIndex = 9;
+            this.tb_email.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_password
             // 
@@ -264,6 +292,7 @@ namespace Accounts_manager.UserControls
             this.tb_siteName.ReadOnly = true;
             this.tb_siteName.Size = new System.Drawing.Size(110, 20);
             this.tb_siteName.TabIndex = 3;
+            this.tb_siteName.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_username
             // 
@@ -287,6 +316,7 @@ namespace Accounts_manager.UserControls
             this.tb_username.ReadOnly = true;
             this.tb_username.Size = new System.Drawing.Size(110, 20);
             this.tb_username.TabIndex = 5;
+            this.tb_username.Click += new System.EventHandler(this.tbs_main);
             // 
             // lbl_siteName
             // 
@@ -333,6 +363,7 @@ namespace Accounts_manager.UserControls
             this.tb_otherInfo.ReadOnly = true;
             this.tb_otherInfo.Size = new System.Drawing.Size(96, 154);
             this.tb_otherInfo.TabIndex = 17;
+            this.tb_otherInfo.Click += new System.EventHandler(this.tbs_main);
             // 
             // panel1
             // 
@@ -356,6 +387,7 @@ namespace Accounts_manager.UserControls
             this.lb_main.ScrollAlwaysVisible = true;
             this.lb_main.Size = new System.Drawing.Size(205, 95);
             this.lb_main.TabIndex = 0;
+            this.lb_main.SelectedIndexChanged += new System.EventHandler(this.lb_main_SelectedIndexChanged);
             // 
             // lbl_viewBy
             // 
@@ -388,28 +420,7 @@ namespace Accounts_manager.UserControls
             this.cb_searchBy.Name = "cb_searchBy";
             this.cb_searchBy.Size = new System.Drawing.Size(144, 21);
             this.cb_searchBy.TabIndex = 1;
-            // 
-            // btn_copy_control_txt
-            // 
-            this.btn_copy_control_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btn_copy_control_txt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_copy_control_txt.FlatAppearance.BorderSize = 0;
-            this.btn_copy_control_txt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
-            this.btn_copy_control_txt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
-            this.btn_copy_control_txt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_copy_control_txt.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btn_copy_control_txt.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_copy_control_txt.Image = ((System.Drawing.Image)(resources.GetObject("btn_copy_control_txt.Image")));
-            this.btn_copy_control_txt.Location = new System.Drawing.Point(70, 131);
-            this.btn_copy_control_txt.Name = "btn_copy_control_txt";
-            this.btn_copy_control_txt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_copy_control_txt.Size = new System.Drawing.Size(150, 40);
-            this.btn_copy_control_txt.TabIndex = 36;
-            this.btn_copy_control_txt.Text = " Copy selected";
-            this.btn_copy_control_txt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_copy_control_txt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_copy_control_txt.UseVisualStyleBackColor = false;
-            this.btn_copy_control_txt.Click += new System.EventHandler(this.btn_copy_control_txt_Click);
+            this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
             // Main
             // 
@@ -419,6 +430,7 @@ namespace Accounts_manager.UserControls
             this.MinimumSize = new System.Drawing.Size(448, 400);
             this.Name = "Main";
             this.Size = new System.Drawing.Size(448, 400);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

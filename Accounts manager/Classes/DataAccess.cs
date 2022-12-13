@@ -19,7 +19,14 @@ namespace Accounts_manager.Classes
             {
                 var output = cnn.Query<AccountModel>("select * from Accounts", new DynamicParameters());
 
-                Debug.WriteLine($"-> Loaded all data from Accounts");
+                Logger.Log(new LogModel()
+                {
+                    ClassName = "DataAccess",
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"Loaded all data from Accounts",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
+
                 return output.ToList();
             }
         }
@@ -31,11 +38,17 @@ namespace Accounts_manager.Classes
                 cnn.Execute("insert into Accounts ('SiteName', 'Username', 'Password', 'Email', 'Phone', 'Question', 'Answer', 'OtherInfo', 'DateCreated') " +
                     "values (@SiteName, @Username, @Password, @Email, @Phone, @Question, @Answer, @OtherInfo, @DateCreated)", account);
 
-                Debug.WriteLine($"-> Added {account.SiteName} at {account.DateCreated}");
+                Logger.Log(new LogModel()
+                {
+                    ClassName = "DataAccess",
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"Added an account",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
         }
 
-        public static void EditAccount(AccountModel account)
+        public void EditAccount(AccountModel account)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -45,7 +58,13 @@ namespace Accounts_manager.Classes
 
                 string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
 
-                Debug.WriteLine($"-> At: {DateNow} - Updated account Id= {account.Id}, created in: {account.DateCreated}");
+                Logger.Log(new LogModel()
+                {
+                    ClassName = this.GetType().Name,
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"Updated account Id: {account.Id}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
         }
 
@@ -57,7 +76,13 @@ namespace Accounts_manager.Classes
 
                 string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
 
-                Debug.WriteLine($"-> At: {DateNow} - Deleted account Id= {account.Id}, created in: {account.DateCreated}");
+                Logger.Log(new LogModel()
+                {
+                    ClassName = "DataAccess",
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"Deleted account Id: {account.Id}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
         }
 

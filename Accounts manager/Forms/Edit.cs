@@ -116,6 +116,7 @@ namespace Accounts_manager
                 {
                     var account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
 
+
                     Debug.WriteLine($"-> selected account with id: {account.Id}");
                     populateTBs(account);
 

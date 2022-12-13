@@ -84,6 +84,7 @@ namespace Accounts_manager.UserControls
             this.btn_save_clearTB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save_clearTB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_save_clearTB.UseVisualStyleBackColor = false;
+            this.btn_save_clearTB.Click += new System.EventHandler(this.btn_save_clearTB_Click);
             // 
             // btn_save_addData
             // 
@@ -105,6 +106,7 @@ namespace Accounts_manager.UserControls
             this.btn_save_addData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save_addData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_save_addData.UseVisualStyleBackColor = false;
+            this.btn_save_addData.Click += new System.EventHandler(this.btn_save_addData_Click);
             // 
             // tb_save_otherInfo
             // 
