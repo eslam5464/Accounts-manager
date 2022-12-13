@@ -115,6 +115,16 @@ namespace Accounts_manager.UserControls
                 selectedControl.BackColor = Color.SkyBlue;
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            DataTable accountsTable = await new Methods().ListToDataTable(accounts);
+
+            string fileLocation = await Methods.PromptSaveFileDialog("output.csv");
+
+            await new Methods().DataTableToCSV(accountsTable, fileLocation);
+            MessageBox.Show("done");
+        }
+
         private void PopulateTBs(AccountModel account)
         {
             if (account != null)

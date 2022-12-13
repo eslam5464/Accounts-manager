@@ -57,6 +57,7 @@ namespace Accounts_manager.UserControls
             this.lb_main = new System.Windows.Forms.ListBox();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -332,6 +333,7 @@ namespace Accounts_manager.UserControls
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.lbl_other_info);
             this.panel5.Controls.Add(this.tb_otherInfo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,6 +424,16 @@ namespace Accounts_manager.UserControls
             this.cb_searchBy.TabIndex = 1;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 131);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,5 +484,6 @@ namespace Accounts_manager.UserControls
         private System.Windows.Forms.Label lbl_viewBy;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Button btn_copy_control_txt;
+        private System.Windows.Forms.Button button1;
     }
 }
