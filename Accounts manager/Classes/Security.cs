@@ -50,18 +50,19 @@ namespace Accounts_manager.Classes
 
         public static async Task<List<AccountModel>> EncryptAccounts(List<AccountModel> accounts)
         {
-            foreach (AccountModel account in accounts)
-            {
-                account.Answer = await Task.Run(() => Encrypt(account.Answer));
-                account.DateCreated = await Task.Run(() => Encrypt(account.DateCreated));
-                account.Email = await Task.Run(() => Encrypt(account.Email));
-                account.OtherInfo = await Task.Run(() => Encrypt(account.OtherInfo));
-                account.Password = await Task.Run(() => Encrypt(account.Password));
-                account.Phone = await Task.Run(() => Encrypt(account.Phone));
-                account.Question = await Task.Run(() => Encrypt(account.Question));
-                account.SiteName = await Task.Run(() => Encrypt(account.SiteName));
-                account.Username = await Task.Run(() => Encrypt(account.Username));
-            }
+            if (accounts.Count > 0)
+                foreach (AccountModel account in accounts)
+                {
+                    account.Answer = await Task.Run(() => Encrypt(account.Answer));
+                    account.DateCreated = await Task.Run(() => Encrypt(account.DateCreated));
+                    account.Email = await Task.Run(() => Encrypt(account.Email));
+                    account.OtherInfo = await Task.Run(() => Encrypt(account.OtherInfo));
+                    account.Password = await Task.Run(() => Encrypt(account.Password));
+                    account.Phone = await Task.Run(() => Encrypt(account.Phone));
+                    account.Question = await Task.Run(() => Encrypt(account.Question));
+                    account.SiteName = await Task.Run(() => Encrypt(account.SiteName));
+                    account.Username = await Task.Run(() => Encrypt(account.Username));
+                }
             return accounts;
         }
 
@@ -82,18 +83,19 @@ namespace Accounts_manager.Classes
 
         public static async Task<List<AccountModel>> DecryptAccounts(List<AccountModel> accounts)
         {
-            foreach (AccountModel account in accounts)
-            {
-                account.Answer = await Task.Run(() => Decrypt(account.Answer));
-                account.DateCreated = await Task.Run(() => Decrypt(account.DateCreated));
-                account.Email = await Task.Run(() => Decrypt(account.Email));
-                account.OtherInfo = await Task.Run(() => Decrypt(account.OtherInfo));
-                account.Password = await Task.Run(() => Decrypt(account.Password));
-                account.Phone = await Task.Run(() => Decrypt(account.Phone));
-                account.Question = await Task.Run(() => Decrypt(account.Question));
-                account.SiteName = await Task.Run(() => Decrypt(account.SiteName));
-                account.Username = await Task.Run(() => Decrypt(account.Username));
-            }
+            if (accounts.Count > 0)
+                foreach (AccountModel account in accounts)
+                {
+                    account.Answer = await Task.Run(() => Decrypt(account.Answer));
+                    account.DateCreated = await Task.Run(() => Decrypt(account.DateCreated));
+                    account.Email = await Task.Run(() => Decrypt(account.Email));
+                    account.OtherInfo = await Task.Run(() => Decrypt(account.OtherInfo));
+                    account.Password = await Task.Run(() => Decrypt(account.Password));
+                    account.Phone = await Task.Run(() => Decrypt(account.Phone));
+                    account.Question = await Task.Run(() => Decrypt(account.Question));
+                    account.SiteName = await Task.Run(() => Decrypt(account.SiteName));
+                    account.Username = await Task.Run(() => Decrypt(account.Username));
+                }
             return accounts;
         }
 

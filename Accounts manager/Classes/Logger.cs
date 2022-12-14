@@ -71,11 +71,17 @@ namespace Accounts_manager.Classes
             }
             catch (Exception ex)
             {
-                Writer.Write("Log Entry : ");
-                Writer.WriteLine($"Cannot log into database & error: {ex.Message}");
-                Writer.WriteLine($"{DateTimeNow} - Method: {logModel.MethodName} - ClassName: {logModel.ClassName} - Log level: {logModel.LogLevel}");
-                Writer.WriteLine($"  #{logModel.LogMessage}");
-                Writer.WriteLine("--------------------------------------------------------------");
+                if (!Directory.Exists(AppLogFileFolder))
+                {
+
+                    Directory.CreateDirectory(AppLogFileFolder);
+                    Writer.Write("Log Entry : ");
+                    Writer.WriteLine($"Cannot log into database & error: {ex.Message}");
+                    Writer.WriteLine($"{DateTimeNow} - Method: {logModel.MethodName} - ClassName: {logModel.ClassName} - Log level: {logModel.LogLevel}");
+                    Writer.WriteLine($"  #{logModel.LogMessage}");
+                    Writer.WriteLine("--------------------------------------------------------------");
+                }
+
             }
         }
 
