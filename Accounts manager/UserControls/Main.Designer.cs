@@ -57,7 +57,6 @@ namespace Accounts_manager.UserControls
             this.lb_main = new System.Windows.Forms.ListBox();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -109,7 +108,7 @@ namespace Accounts_manager.UserControls
             this.tb_phone.ReadOnly = true;
             this.tb_phone.Size = new System.Drawing.Size(96, 20);
             this.tb_phone.TabIndex = 11;
-            this.tb_phone.Click += new System.EventHandler(this.tbs_main);
+            this.tb_phone.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_phone
             // 
@@ -133,7 +132,7 @@ namespace Accounts_manager.UserControls
             this.tb_question.ReadOnly = true;
             this.tb_question.Size = new System.Drawing.Size(96, 20);
             this.tb_question.TabIndex = 13;
-            this.tb_question.Click += new System.EventHandler(this.tbs_main);
+            this.tb_question.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_date_created
             // 
@@ -169,7 +168,7 @@ namespace Accounts_manager.UserControls
             this.tb_dateCreated.ReadOnly = true;
             this.tb_dateCreated.Size = new System.Drawing.Size(96, 20);
             this.tb_dateCreated.TabIndex = 19;
-            this.tb_dateCreated.Click += new System.EventHandler(this.tbs_main);
+            this.tb_dateCreated.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // tb_answer
             // 
@@ -181,7 +180,7 @@ namespace Accounts_manager.UserControls
             this.tb_answer.ReadOnly = true;
             this.tb_answer.Size = new System.Drawing.Size(96, 20);
             this.tb_answer.TabIndex = 15;
-            this.tb_answer.Click += new System.EventHandler(this.tbs_main);
+            this.tb_answer.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_answer
             // 
@@ -245,7 +244,7 @@ namespace Accounts_manager.UserControls
             this.tb_password.ReadOnly = true;
             this.tb_password.Size = new System.Drawing.Size(110, 20);
             this.tb_password.TabIndex = 7;
-            this.tb_password.Click += new System.EventHandler(this.tbs_main);
+            this.tb_password.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_email
             // 
@@ -269,7 +268,7 @@ namespace Accounts_manager.UserControls
             this.tb_email.ReadOnly = true;
             this.tb_email.Size = new System.Drawing.Size(110, 20);
             this.tb_email.TabIndex = 9;
-            this.tb_email.Click += new System.EventHandler(this.tbs_main);
+            this.tb_email.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_password
             // 
@@ -293,7 +292,7 @@ namespace Accounts_manager.UserControls
             this.tb_siteName.ReadOnly = true;
             this.tb_siteName.Size = new System.Drawing.Size(110, 20);
             this.tb_siteName.TabIndex = 3;
-            this.tb_siteName.Click += new System.EventHandler(this.tbs_main);
+            this.tb_siteName.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_username
             // 
@@ -317,7 +316,7 @@ namespace Accounts_manager.UserControls
             this.tb_username.ReadOnly = true;
             this.tb_username.Size = new System.Drawing.Size(110, 20);
             this.tb_username.TabIndex = 5;
-            this.tb_username.Click += new System.EventHandler(this.tbs_main);
+            this.tb_username.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // lbl_siteName
             // 
@@ -333,7 +332,6 @@ namespace Accounts_manager.UserControls
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.lbl_other_info);
             this.panel5.Controls.Add(this.tb_otherInfo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -365,7 +363,7 @@ namespace Accounts_manager.UserControls
             this.tb_otherInfo.ReadOnly = true;
             this.tb_otherInfo.Size = new System.Drawing.Size(96, 154);
             this.tb_otherInfo.TabIndex = 17;
-            this.tb_otherInfo.Click += new System.EventHandler(this.tbs_main);
+            this.tb_otherInfo.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // panel1
             // 
@@ -424,16 +422,6 @@ namespace Accounts_manager.UserControls
             this.cb_searchBy.TabIndex = 1;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +472,5 @@ namespace Accounts_manager.UserControls
         private System.Windows.Forms.Label lbl_viewBy;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Button btn_copy_control_txt;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Classes\GlobalVars.cs" />
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\Models\LogModel.cs" />
+    <Compile Include="Classes\Security.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
     </Compile>

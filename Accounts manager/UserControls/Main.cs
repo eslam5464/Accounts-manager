@@ -15,7 +15,7 @@ namespace Accounts_manager.UserControls
     public partial class Main : UserControl
     {
 
-        private List<AccountModel> accounts, accounts_temp;
+        private List<AccountModel> accounts = new List<AccountModel>();
         private Control selectedControl = null, prevSelectedControl = null;
 
         public Main()
@@ -47,25 +47,10 @@ namespace Accounts_manager.UserControls
 
         public async void LoadAccounts()
         {
-            accounts_temp = DataAccess.LoadData();
-            accounts = new List<AccountModel>();
             lb_main.DataSource = null;
             lb_main.Items.Add("Please wait for the list to load...");
 
-            foreach (AccountModel account in accounts_temp)
-            {
-                account.Answer = await Task.Run(() => Methods.Decrypt(account.Answer));
-                account.DateCreated = await Task.Run(() => Methods.Decrypt(account.DateCreated));
-                account.Email = await Task.Run(() => Methods.Decrypt(account.Email));
-                account.OtherInfo = await Task.Run(() => Methods.Decrypt(account.OtherInfo));
-                account.Password = await Task.Run(() => Methods.Decrypt(account.Password));
-                account.Phone = await Task.Run(() => Methods.Decrypt(account.Phone));
-                account.Question = await Task.Run(() => Methods.Decrypt(account.Question));
-                account.SiteName = await Task.Run(() => Methods.Decrypt(account.SiteName));
-                account.Username = await Task.Run(() => Methods.Decrypt(account.Username));
-
-                await Task.Run(() => accounts.Add(account));
-            }
+            accounts = await Security.DecryptAccounts(DataAccess.LoadData());
 
             lb_main.DataSource = accounts;
             lb_main.ValueMember = "Id";
@@ -76,34 +61,37 @@ namespace Accounts_manager.UserControls
 
         private void lb_main_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));
-                if (account != null)
+            if (lb_main.SelectedValue != null && lb_main.SelectedValue.GetType() == typeof(int) &&
+                    lb_main.SelectedValue.GetType() == typeof(AccountModel))
+                try
+                {
+                    var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));
+                    if (account != null)
+                        Logger.Log(new LogModel()
+                        {
+                            ClassName = this.GetType().Name,
+                            LogLevel = Logger.INFO,
+                            LogMessage = $"Selected account with id: {account.Id}",
+                            MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                        });
+
+                    PopulateTBs(account);
+                }
+                catch (Exception ex)
+                {
                     Logger.Log(new LogModel()
                     {
                         ClassName = this.GetType().Name,
-                        LogLevel = Logger.INFO,
-                        LogMessage = $"selected account with id: {account.Id}",
+                        LogLevel = Logger.ERROR,
+                        LogMessage = $"While selecting index '{lb_main.SelectedValue}' '{lb_main.SelectedItem}' " +
+                            $"in listbox main & error: {ex.Message}",
                         MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                     });
+                }
 
-                PopulateTBs(account);
-
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(new LogModel()
-                {
-                    ClassName = this.GetType().Name,
-                    LogLevel = Logger.ERROR,
-                    LogMessage = $"while selecting index in listbox main & error: {ex.Message}",
-                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
-                });
-            }
         }
 
-        private void tbs_main(object sender, EventArgs e)
+        private void Tbs_main_Click(object sender, EventArgs e)
         {
             prevSelectedControl = selectedControl;
             selectedControl = (Control)sender;
@@ -113,16 +101,6 @@ namespace Accounts_manager.UserControls
 
             if (selectedControl != null)
                 selectedControl.BackColor = Color.SkyBlue;
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            DataTable accountsTable = await new Methods().ListToDataTable(accounts);
-
-            string fileLocation = await Methods.PromptSaveFileDialog("output.csv");
-
-            await new Methods().DataTableToCSV(accountsTable, fileLocation);
-            MessageBox.Show("done");
         }
 
         private void PopulateTBs(AccountModel account)

@@ -34,28 +34,35 @@ namespace Accounts_manager
 
         }
 
-        private void btn_save_addData_Click(object sender, EventArgs e)
+        private async void btn_save_addData_Click(object sender, EventArgs e)
         {
-            AccountModel account = new AccountModel();
 
             if (tb_save_siteName.Text != "")
             {
-                account.SiteName = Methods.Encrypt(tb_save_siteName.Text);
-                account.Username = Methods.Encrypt(tb_save_username.Text);
-                account.Password = Methods.Encrypt(tb_save_password.Text);
-                account.Email = Methods.Encrypt(tb_save_email.Text);
-                account.Phone = Methods.Encrypt(tb_save_phone.Text);
-                account.Question = Methods.Encrypt(tb_save_question.Text);
-                account.Answer = Methods.Encrypt(tb_save_answer.Text);
-                account.OtherInfo = Methods.Encrypt(tb_save_otherInfo.Text);
-                account.DateCreated = Methods.Encrypt(DateTime.Now.ToString("yyyy/M/dd hh:mm tt"));
+                btn_save_addData.Enabled = false;
+                AccountModel account = new AccountModel()
+                {
+                    SiteName = tb_save_siteName.Text,
+                    Username = tb_save_username.Text,
+                    Password = tb_save_password.Text,
+                    Email = tb_save_email.Text,
+                    Phone = tb_save_phone.Text,
+                    Question = tb_save_question.Text,
+                    Answer = tb_save_answer.Text,
+                    OtherInfo = tb_save_otherInfo.Text,
+                    DateCreated = DateTime.Now.ToString("yyyy/M/dd hh:mm tt"),
+                };
+
+                account = await Security.EncryptOneAccount(account);
 
                 DataAccess.AddAccount(account);
+
+                btn_save_addData.Enabled = true;
                 MessageBox.Show("Account saved");
             }
             else
             {
-                MessageBox.Show("please fill the required boxes");
+                MessageBox.Show("Please fill the required boxes");
             }
         }
 

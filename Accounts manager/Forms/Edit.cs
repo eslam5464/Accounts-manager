@@ -36,15 +36,15 @@ namespace Accounts_manager
 
             foreach (AccountModel account in accounts_temp)
             {
-                account.Answer = Methods.Decrypt(account.Answer);
-                account.DateCreated = Methods.Decrypt(account.DateCreated);
-                account.Email = Methods.Decrypt(account.Email);
-                account.OtherInfo = Methods.Decrypt(account.OtherInfo);
-                account.Password = Methods.Decrypt(account.Password);
-                account.Phone = Methods.Decrypt(account.Phone);
-                account.Question = Methods.Decrypt(account.Question);
-                account.SiteName = Methods.Decrypt(account.SiteName);
-                account.Username = Methods.Decrypt(account.Username);
+                account.Answer = Security.Decrypt(account.Answer);
+                account.DateCreated = Security.Decrypt(account.DateCreated);
+                account.Email = Security.Decrypt(account.Email);
+                account.OtherInfo = Security.Decrypt(account.OtherInfo);
+                account.Password = Security.Decrypt(account.Password);
+                account.Phone = Security.Decrypt(account.Phone);
+                account.Question = Security.Decrypt(account.Question);
+                account.SiteName = Security.Decrypt(account.SiteName);
+                account.Username = Security.Decrypt(account.Username);
 
                 accounts.Add(account);
             }

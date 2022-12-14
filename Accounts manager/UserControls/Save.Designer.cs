@@ -66,6 +66,7 @@ namespace Accounts_manager.UserControls
             // 
             // btn_save_clearTB
             // 
+            this.btn_save_clearTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save_clearTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.btn_save_clearTB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_save_clearTB.FlatAppearance.BorderSize = 0;
@@ -88,6 +89,7 @@ namespace Accounts_manager.UserControls
             // 
             // btn_save_addData
             // 
+            this.btn_save_addData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save_addData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.btn_save_addData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_save_addData.FlatAppearance.BorderSize = 0;
@@ -347,15 +349,15 @@ namespace Accounts_manager.UserControls
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 103);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -365,16 +367,16 @@ namespace Accounts_manager.UserControls
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(136, 97);
+            this.panel5.Size = new System.Drawing.Size(130, 97);
             this.panel5.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_save_clearTB);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(145, 3);
+            this.panel6.Location = new System.Drawing.Point(139, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(193, 97);
+            this.panel6.Size = new System.Drawing.Size(199, 97);
             this.panel6.TabIndex = 1;
             // 
             // Save

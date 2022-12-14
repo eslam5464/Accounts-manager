@@ -19,36 +19,40 @@ namespace Accounts_manager.UserControls
             InitializeComponent();
         }
 
-        private void btn_save_addData_Click(object sender, EventArgs e)
+        private async void btn_save_addData_Click(object sender, EventArgs e)
         {
-            AccountModel account = new AccountModel();
-
             if (tb_save_siteName.Text != "")
             {
                 try
                 {
                     btn_save_addData.Enabled = false;
-                    account.SiteName = Methods.Encrypt(tb_save_siteName.Text);
-                    account.Username = Methods.Encrypt(tb_save_username.Text);
-                    account.Password = Methods.Encrypt(tb_save_password.Text);
-                    account.Email = Methods.Encrypt(tb_save_email.Text);
-                    account.Phone = Methods.Encrypt(tb_save_phone.Text);
-                    account.Question = Methods.Encrypt(tb_save_question.Text);
-                    account.Answer = Methods.Encrypt(tb_save_answer.Text);
-                    account.OtherInfo = Methods.Encrypt(tb_save_otherInfo.Text);
-                    account.DateCreated = Methods.Encrypt(DateTime.Now.ToString("yyyy/M/dd hh:mm tt"));
+
+                    AccountModel account = new AccountModel()
+                    {
+                        SiteName = tb_save_siteName.Text,
+                        Username = tb_save_username.Text,
+                        Password = tb_save_password.Text,
+                        Email = tb_save_email.Text,
+                        Phone = tb_save_phone.Text,
+                        Question = tb_save_question.Text,
+                        Answer = tb_save_answer.Text,
+                        OtherInfo = tb_save_otherInfo.Text,
+                        DateCreated = DateTime.Now.ToString("yyyy/MM/dd hh:mm tt"),
+                    };
+
+                    account = await Security.EncryptOneAccount(account);
 
                     DataAccess.AddAccount(account);
 
                     Logger.Log(new LogModel()
                     {
-                        ClassName = "DataAccess",
+                        ClassName = this.GetType().Name,
                         LogLevel = Logger.INFO,
                         LogMessage = $"Added an account",
                         MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                     });
                     btn_save_addData.Enabled = true;
-                    MessageBox.Show("Account saved", "Sucess!!..", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Account saved", "Success!!..", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -80,10 +84,9 @@ namespace Accounts_manager.UserControls
                 tb_save_siteName,
                 tb_save_username,
             };
+
             foreach (TextBox textBox in AllTextBoxes)
-            {
                 textBox.Text = "";
-            }
 
             Logger.Log(new LogModel()
             {
