@@ -22,21 +22,57 @@ namespace Accounts_manager.UserControls
             InitializeComponent();
         }
 
-        private void btn_save_changes_Click(object sender, EventArgs e)
+        private async void btn_save_changes_Click(object sender, EventArgs e)
         {
             if (lb_edit.SelectedIndex != -1)
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to save changes?", "Notice!.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("Are you sure you want to save changes?", "Notice!.", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Exclamation);
 
                 if (result == DialogResult.Yes)
                 {
-                    var account = accounts.Find(x => x.Id == int.Parse(lb_edit.SelectedValue.ToString()));
+                    try
+                    {
+                        int AccountId = int.Parse(lb_edit.SelectedValue.ToString());
+                        var account = accounts.Find(x => x.Id == AccountId);
+                        string AccountSiteName = tb_siteName.Text;
+
+                        account.Answer = tb_answer.Text;
+                        account.Email = tb_email.Text;
+                        account.OtherInfo = tb_otherInfo.Text;
+                        account.Password = tb_password.Text;
+                        account.Phone = tb_phone.Text;
+                        account.Question = tb_question.Text;
+                        account.SiteName = tb_siteName.Text;
+                        account.Username = tb_username.Text;
+
+                        account = await Security.EncryptOneAccount(account);
+
+                        DataAccess.EditAccount(account);
+
+                        await LoadAccounts();
+
+                        int EditedAccountIndex = lb_edit.FindStringExact(AccountSiteName);
+
+                        if (EditedAccountIndex > 0)
+                            lb_edit.SelectedIndex = EditedAccountIndex;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Log(new LogModel()
+                        {
+                            ClassName = this.GetType().Name,
+                            LogLevel = Logger.ERROR,
+                            LogMessage = $"While saving changes for account with id: {lb_edit.SelectedValue} & error: {ex.Message}",
+                            MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                        });
+                    }
 
                 }
             }
         }
 
-        private void btn_deleteAcc_Click(object sender, EventArgs e)
+        private async void btn_deleteAcc_Click(object sender, EventArgs e)
         {
             if (lb_edit.SelectedIndex != -1)
             {
@@ -53,7 +89,7 @@ namespace Accounts_manager.UserControls
                         if (lb_edit.SelectedIndex > -1)
                             lb_edit.SelectedIndex--;
 
-                        LoadAccounts();
+                        await LoadAccounts();
                     }
                     catch (Exception ex)
                     {
@@ -77,7 +113,7 @@ namespace Accounts_manager.UserControls
             }
         }
 
-        internal async void LoadAccounts()
+        internal async Task LoadAccounts()
         {
             lb_edit.DataSource = null;
             lb_edit.Items.Add("Please wait for the list to load...");

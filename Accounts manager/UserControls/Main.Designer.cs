@@ -103,10 +103,11 @@ namespace Accounts_manager.UserControls
             this.tb_phone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_phone.Location = new System.Drawing.Point(110, 47);
             this.tb_phone.Name = "tb_phone";
             this.tb_phone.ReadOnly = true;
-            this.tb_phone.Size = new System.Drawing.Size(96, 20);
+            this.tb_phone.Size = new System.Drawing.Size(96, 21);
             this.tb_phone.TabIndex = 11;
             this.tb_phone.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -127,10 +128,11 @@ namespace Accounts_manager.UserControls
             this.tb_question.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_question.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_question.Location = new System.Drawing.Point(110, 73);
             this.tb_question.Name = "tb_question";
             this.tb_question.ReadOnly = true;
-            this.tb_question.Size = new System.Drawing.Size(96, 20);
+            this.tb_question.Size = new System.Drawing.Size(96, 21);
             this.tb_question.TabIndex = 13;
             this.tb_question.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -163,10 +165,11 @@ namespace Accounts_manager.UserControls
             this.tb_dateCreated.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_dateCreated.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_dateCreated.Location = new System.Drawing.Point(110, 125);
             this.tb_dateCreated.Name = "tb_dateCreated";
             this.tb_dateCreated.ReadOnly = true;
-            this.tb_dateCreated.Size = new System.Drawing.Size(96, 20);
+            this.tb_dateCreated.Size = new System.Drawing.Size(96, 21);
             this.tb_dateCreated.TabIndex = 19;
             this.tb_dateCreated.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -175,10 +178,11 @@ namespace Accounts_manager.UserControls
             this.tb_answer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_answer.Location = new System.Drawing.Point(110, 99);
             this.tb_answer.Name = "tb_answer";
             this.tb_answer.ReadOnly = true;
-            this.tb_answer.Size = new System.Drawing.Size(96, 20);
+            this.tb_answer.Size = new System.Drawing.Size(96, 21);
             this.tb_answer.TabIndex = 15;
             this.tb_answer.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -238,11 +242,12 @@ namespace Accounts_manager.UserControls
             this.tb_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_password.Location = new System.Drawing.Point(104, 62);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '●';
             this.tb_password.ReadOnly = true;
-            this.tb_password.Size = new System.Drawing.Size(110, 20);
+            this.tb_password.Size = new System.Drawing.Size(110, 21);
             this.tb_password.TabIndex = 7;
             this.tb_password.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -263,10 +268,11 @@ namespace Accounts_manager.UserControls
             this.tb_email.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_email.Location = new System.Drawing.Point(104, 88);
             this.tb_email.Name = "tb_email";
             this.tb_email.ReadOnly = true;
-            this.tb_email.Size = new System.Drawing.Size(110, 20);
+            this.tb_email.Size = new System.Drawing.Size(110, 21);
             this.tb_email.TabIndex = 9;
             this.tb_email.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -287,10 +293,11 @@ namespace Accounts_manager.UserControls
             this.tb_siteName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_siteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_siteName.Location = new System.Drawing.Point(104, 10);
             this.tb_siteName.Name = "tb_siteName";
             this.tb_siteName.ReadOnly = true;
-            this.tb_siteName.Size = new System.Drawing.Size(110, 20);
+            this.tb_siteName.Size = new System.Drawing.Size(110, 21);
             this.tb_siteName.TabIndex = 3;
             this.tb_siteName.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -311,10 +318,11 @@ namespace Accounts_manager.UserControls
             this.tb_username.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_username.Location = new System.Drawing.Point(104, 36);
             this.tb_username.Name = "tb_username";
             this.tb_username.ReadOnly = true;
-            this.tb_username.Size = new System.Drawing.Size(110, 20);
+            this.tb_username.Size = new System.Drawing.Size(110, 21);
             this.tb_username.TabIndex = 5;
             this.tb_username.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
@@ -357,6 +365,7 @@ namespace Accounts_manager.UserControls
             this.tb_otherInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_otherInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_otherInfo.Location = new System.Drawing.Point(110, 17);
             this.tb_otherInfo.Multiline = true;
             this.tb_otherInfo.Name = "tb_otherInfo";
@@ -381,11 +390,13 @@ namespace Accounts_manager.UserControls
             this.lb_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_main.FormattingEnabled = true;
+            this.lb_main.ItemHeight = 15;
             this.lb_main.Location = new System.Drawing.Point(3, 50);
             this.lb_main.Name = "lb_main";
             this.lb_main.ScrollAlwaysVisible = true;
-            this.lb_main.Size = new System.Drawing.Size(211, 134);
+            this.lb_main.Size = new System.Drawing.Size(211, 124);
             this.lb_main.TabIndex = 0;
             this.lb_main.SelectedIndexChanged += new System.EventHandler(this.lb_main_SelectedIndexChanged);
             // 
@@ -407,6 +418,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_searchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_searchBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_searchBy.FormattingEnabled = true;
             this.cb_searchBy.Items.AddRange(new object[] {
             "Site Name",
@@ -418,7 +430,7 @@ namespace Accounts_manager.UserControls
             "Date created"});
             this.cb_searchBy.Location = new System.Drawing.Point(70, 11);
             this.cb_searchBy.Name = "cb_searchBy";
-            this.cb_searchBy.Size = new System.Drawing.Size(144, 21);
+            this.cb_searchBy.Size = new System.Drawing.Size(144, 23);
             this.cb_searchBy.TabIndex = 1;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 

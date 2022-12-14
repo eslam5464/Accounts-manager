@@ -66,7 +66,7 @@ namespace Accounts_manager.UserControls
             // 
             // btn_save_clearTB
             // 
-            this.btn_save_clearTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_save_clearTB.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_save_clearTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.btn_save_clearTB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_save_clearTB.FlatAppearance.BorderSize = 0;
@@ -89,7 +89,7 @@ namespace Accounts_manager.UserControls
             // 
             // btn_save_addData
             // 
-            this.btn_save_addData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_save_addData.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_save_addData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
             this.btn_save_addData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_save_addData.FlatAppearance.BorderSize = 0;
@@ -115,6 +115,7 @@ namespace Accounts_manager.UserControls
             this.tb_save_otherInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_otherInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_otherInfo.Location = new System.Drawing.Point(3, 185);
             this.tb_save_otherInfo.Multiline = true;
             this.tb_save_otherInfo.Name = "tb_save_otherInfo";
@@ -138,9 +139,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_answer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_answer.Location = new System.Drawing.Point(3, 159);
             this.tb_save_answer.Name = "tb_save_answer";
-            this.tb_save_answer.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_answer.Size = new System.Drawing.Size(335, 21);
             this.tb_save_answer.TabIndex = 50;
             // 
             // lbl_answer
@@ -160,9 +162,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_question.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_question.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_question.Location = new System.Drawing.Point(3, 133);
             this.tb_save_question.Name = "tb_save_question";
-            this.tb_save_question.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_question.Size = new System.Drawing.Size(335, 21);
             this.tb_save_question.TabIndex = 48;
             // 
             // lbl_question
@@ -182,9 +185,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_phone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_phone.Location = new System.Drawing.Point(3, 107);
             this.tb_save_phone.Name = "tb_save_phone";
-            this.tb_save_phone.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_phone.Size = new System.Drawing.Size(335, 21);
             this.tb_save_phone.TabIndex = 46;
             // 
             // lbl_phone
@@ -204,9 +208,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_email.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_email.Location = new System.Drawing.Point(3, 81);
             this.tb_save_email.Name = "tb_save_email";
-            this.tb_save_email.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_email.Size = new System.Drawing.Size(335, 21);
             this.tb_save_email.TabIndex = 44;
             // 
             // lbl_email
@@ -226,9 +231,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_password.Location = new System.Drawing.Point(3, 55);
             this.tb_save_password.Name = "tb_save_password";
-            this.tb_save_password.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_password.Size = new System.Drawing.Size(335, 21);
             this.tb_save_password.TabIndex = 42;
             // 
             // lbl_password
@@ -248,9 +254,10 @@ namespace Accounts_manager.UserControls
             this.tb_save_username.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_save_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_username.Location = new System.Drawing.Point(3, 29);
             this.tb_save_username.Name = "tb_save_username";
-            this.tb_save_username.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_username.Size = new System.Drawing.Size(335, 21);
             this.tb_save_username.TabIndex = 40;
             // 
             // lbl_username
@@ -271,9 +278,10 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_save_siteName.BackColor = System.Drawing.SystemColors.Window;
+            this.tb_save_siteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_save_siteName.Location = new System.Drawing.Point(3, 3);
             this.tb_save_siteName.Name = "tb_save_siteName";
-            this.tb_save_siteName.Size = new System.Drawing.Size(335, 20);
+            this.tb_save_siteName.Size = new System.Drawing.Size(335, 21);
             this.tb_save_siteName.TabIndex = 38;
             // 
             // lbl_siteName

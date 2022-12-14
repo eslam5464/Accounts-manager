@@ -21,6 +21,7 @@ namespace Accounts_manager
         private readonly UserControls.Blank uc_blank = new UserControls.Blank();
         private readonly UserControls.Save uc_save = new UserControls.Save();
         private readonly UserControls.Edit uc_edit = new UserControls.Edit();
+        private readonly UserControls.Settings uc_settings = new UserControls.Settings();
 
         public form_parent()
         {
@@ -92,7 +93,6 @@ namespace Accounts_manager
 
         private void ShowControl(UserControl userControl)
         {
-            //userControl.Anchor =;
             userControl.Dock = DockStyle.Fill;
             userControl.BringToFront();
         }
@@ -164,7 +164,7 @@ namespace Accounts_manager
                 uc_blank,
                 uc_save,
                 uc_edit,
-                //uc_remove,
+                uc_settings,
             };
 
             foreach (UserControl userControl in AllUserControls)
@@ -193,11 +193,11 @@ namespace Accounts_manager
             SetSelectedButton(btn_save);
         }
 
-        private void Btn_edit_Click(object sender, EventArgs e)
+        private async void Btn_edit_Click(object sender, EventArgs e)
         {
             ShowControl(uc_edit);
             SetSelectedButton(btn_edit);
-            uc_edit.LoadAccounts();
+            await uc_edit.LoadAccounts();
 
             //if (btn_selected != null && btn_selectedPrev != null)
             //    Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
@@ -205,11 +205,8 @@ namespace Accounts_manager
 
         private void Btn_about_Click(object sender, EventArgs e)
         {
-            openChildForm(new form_about());
+            ShowControl(uc_settings);
             SetSelectedButton(btn_about);
-
-            if (btn_selected != null && btn_selectedPrev != null)
-                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
         }
 
         #endregion

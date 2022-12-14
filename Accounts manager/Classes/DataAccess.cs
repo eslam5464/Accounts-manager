@@ -33,7 +33,6 @@ namespace Accounts_manager.Classes
 
                     return output.ToList();
                 }
-
             }
             catch (Exception ex)
             {
@@ -74,13 +73,13 @@ namespace Accounts_manager.Classes
                 {
                     ClassName = "DataAccess",
                     LogLevel = Logger.ERROR,
-                    LogMessage = $"Error while adding account: {ex.Message}",
+                    LogMessage = $"While adding and account & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }
         }
 
-        public void EditAccount(AccountModel account)
+        public static void EditAccount(AccountModel account)
         {
             try
             {
