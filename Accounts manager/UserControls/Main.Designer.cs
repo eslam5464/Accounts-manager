@@ -222,7 +222,7 @@ namespace Accounts_manager.UserControls
             this.btn_copy_control_txt.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.btn_copy_control_txt.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btn_copy_control_txt.Image = ((System.Drawing.Image)(resources.GetObject("btn_copy_control_txt.Image")));
-            this.btn_copy_control_txt.Location = new System.Drawing.Point(70, 131);
+            this.btn_copy_control_txt.Location = new System.Drawing.Point(44, 114);
             this.btn_copy_control_txt.Name = "btn_copy_control_txt";
             this.btn_copy_control_txt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_copy_control_txt.Size = new System.Drawing.Size(150, 40);
@@ -382,10 +382,10 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_main.FormattingEnabled = true;
-            this.lb_main.Location = new System.Drawing.Point(9, 50);
+            this.lb_main.Location = new System.Drawing.Point(3, 50);
             this.lb_main.Name = "lb_main";
             this.lb_main.ScrollAlwaysVisible = true;
-            this.lb_main.Size = new System.Drawing.Size(205, 95);
+            this.lb_main.Size = new System.Drawing.Size(211, 134);
             this.lb_main.TabIndex = 0;
             this.lb_main.SelectedIndexChanged += new System.EventHandler(this.lb_main_SelectedIndexChanged);
             // 
@@ -395,7 +395,7 @@ namespace Accounts_manager.UserControls
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_viewBy.AutoSize = true;
-            this.lbl_viewBy.Location = new System.Drawing.Point(17, 14);
+            this.lbl_viewBy.Location = new System.Drawing.Point(6, 14);
             this.lbl_viewBy.Name = "lbl_viewBy";
             this.lbl_viewBy.Size = new System.Drawing.Size(47, 13);
             this.lbl_viewBy.TabIndex = 2;

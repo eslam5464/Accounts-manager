@@ -50,7 +50,7 @@ namespace Accounts_manager.UserControls
             lb_main.DataSource = null;
             lb_main.Items.Add("Please wait for the list to load...");
 
-            accounts = await Security.DecryptAccounts(DataAccess.LoadData());
+            accounts = await Security.DecryptAccounts(DataAccess.GetAllAccounts());
 
             lb_main.DataSource = accounts;
             lb_main.ValueMember = "Id";
@@ -61,8 +61,7 @@ namespace Accounts_manager.UserControls
 
         private void lb_main_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lb_main.SelectedValue != null && lb_main.SelectedValue.GetType() == typeof(int) &&
-                    lb_main.SelectedValue.GetType() == typeof(AccountModel))
+            if (lb_main.SelectedValue != null && lb_main.SelectedValue.GetType() == typeof(int))
                 try
                 {
                     var account = accounts.Find(x => x.Id == int.Parse(lb_main.SelectedValue.ToString()));

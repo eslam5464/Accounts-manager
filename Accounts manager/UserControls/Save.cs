@@ -37,7 +37,7 @@ namespace Accounts_manager.UserControls
                         Question = tb_save_question.Text,
                         Answer = tb_save_answer.Text,
                         OtherInfo = tb_save_otherInfo.Text,
-                        DateCreated = DateTime.Now.ToString("yyyy/MM/dd hh:mm tt"),
+                        DateCreated = DateTime.Now.ToString("yyyy/M/dd hh:mm tt"),
                     };
 
                     account = await Security.EncryptOneAccount(account);

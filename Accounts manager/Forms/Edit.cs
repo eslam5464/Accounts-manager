@@ -30,7 +30,7 @@ namespace Accounts_manager
 
         private void LoadList()
         {
-            accounts_temp = DataAccess.LoadData();
+            accounts_temp = DataAccess.GetAllAccounts();
             accounts = new List<AccountModel>();
             lb_edit.DataSource = null;
 

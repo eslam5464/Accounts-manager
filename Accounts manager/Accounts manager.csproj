@@ -135,6 +135,12 @@
     <Compile Include="UserControls\Blank.Designer.cs">
       <DependentUpon>Blank.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Main.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </Content>
     <EmbeddedResource Include="UserControls\Blank.resx">
       <DependentUpon>Blank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

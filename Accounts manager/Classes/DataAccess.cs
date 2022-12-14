@@ -8,53 +8,104 @@ using System.Data.SQLite;
 using Dapper;
 using System.Diagnostics;
 using Accounts_manager.Classes.Models;
+using System.Configuration;
 
 namespace Accounts_manager.Classes
 {
     class DataAccess
     {
-        public static List<AccountModel> LoadData()
+        public static List<AccountModel> GetAllAccounts()
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                var output = cnn.Query<AccountModel>("select * from Accounts", new DynamicParameters());
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
 
+                    var output = cnn.Query<AccountModel>("select * from Accounts", new DynamicParameters());
+
+                    Logger.Log(new LogModel()
+                    {
+                        ClassName = "DataAccess",
+                        LogLevel = Logger.INFO,
+                        LogMessage = $"Loaded all Accounts",
+                        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                    });
+
+                    return output.ToList();
+                }
+
+            }
+            catch (Exception ex)
+            {
                 Logger.Log(new LogModel()
                 {
                     ClassName = "DataAccess",
-                    LogLevel = Logger.INFO,
-                    LogMessage = $"Loaded all data from Accounts",
+                    LogLevel = Logger.ERROR,
+                    LogMessage = $"While getting all accounts & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
-
-                return output.ToList();
+                return null;
             }
+
         }
 
         public static void AddAccount(AccountModel account)
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                cnn.Execute("insert into Accounts ('SiteName', 'Username', 'Password', 'Email', 'Phone', 'Question', 'Answer', 'OtherInfo', 'DateCreated') " +
-                    "values (@SiteName, @Username, @Password, @Email, @Phone, @Question, @Answer, @OtherInfo, @DateCreated)", account);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("insert into Accounts ('SiteName', 'Username', 'Password', 'Email', 'Phone', " +
+                        "'Question', 'Answer', 'OtherInfo', 'DateCreated') values (@SiteName, @Username, @Password, " +
+                        "@Email, @Phone, @Question, @Answer, @OtherInfo, @DateCreated)", account);
+
+                    Logger.Log(new LogModel()
+                    {
+                        ClassName = "DataAccess",
+                        LogLevel = Logger.INFO,
+                        LogMessage = $"Added new account",
+                        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(new LogModel()
+                {
+                    ClassName = "DataAccess",
+                    LogLevel = Logger.ERROR,
+                    LogMessage = $"Error while adding account: {ex.Message}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
             }
         }
 
         public void EditAccount(AccountModel account)
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                cnn.Execute("update Accounts set 'SiteName' = @SiteName, 'Username'= @Username, 'Password'= @Password," +
-                    " 'Email'= @Email, 'Phone'= @Phone, 'Question'= @Question, 'Answer'= @Answer, 'OtherInfo'= @OtherInfo" +
-                    "where Id = @Id ", account);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("update Accounts set 'SiteName' = @SiteName, 'Username'= @Username, 'Password'= @Password," +
+                        " 'Email'= @Email, 'Phone'= @Phone, 'Question'= @Question, 'Answer'= @Answer, 'OtherInfo'= @OtherInfo " +
+                        "where Id = @Id", account);
 
-                string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
-
+                    Logger.Log(new LogModel()
+                    {
+                        ClassName = "DataAccess",
+                        LogLevel = Logger.INFO,
+                        LogMessage = $"Edited account with id = {account.Id}",
+                        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                    });
+                }
+            }
+            catch (Exception)
+            {
                 Logger.Log(new LogModel()
                 {
-                    ClassName = this.GetType().Name,
+                    ClassName = "DataAccess",
                     LogLevel = Logger.INFO,
-                    LogMessage = $"Updated account Id: {account.Id}",
+                    LogMessage = $"While deleting account with id = {account.Id}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }
@@ -62,17 +113,28 @@ namespace Accounts_manager.Classes
 
         public static void DeleteAccount(AccountModel account)
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                cnn.Execute("delete from Accounts where Id = @Id ", account);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("delete from Accounts where Id = @Id", account);
 
-                string DateNow = DateTime.Now.ToString("yyyy/M/dd hh:mm tt");
-
+                    Logger.Log(new LogModel()
+                    {
+                        ClassName = "DataAccess",
+                        LogLevel = Logger.INFO,
+                        LogMessage = $"Deleted account with id = {account.Id}",
+                        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
                 Logger.Log(new LogModel()
                 {
                     ClassName = "DataAccess",
-                    LogLevel = Logger.INFO,
-                    LogMessage = $"Deleted account Id: {account.Id}",
+                    LogLevel = Logger.ERROR,
+                    LogMessage = $"While deleting account & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }
@@ -80,7 +142,7 @@ namespace Accounts_manager.Classes
 
         private static string LoadConnectionString(string id = "Default")
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings[id].ConnectionString;
+            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Accounts_manager.Classes
         private static void LogString(LogModel logModel, TextWriter Writer)
         {
 
-            string DateTimeNow = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
+            string DateTimeNow = DateTime.Now.ToString("yyyy/M/dd hh:mm:ss tt");
             logModel.Date = DateTimeNow;
 
             try

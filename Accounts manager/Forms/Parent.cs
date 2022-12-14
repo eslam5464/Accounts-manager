@@ -20,6 +20,7 @@ namespace Accounts_manager
         private readonly UserControls.Main uc_main = new UserControls.Main();
         private readonly UserControls.Blank uc_blank = new UserControls.Blank();
         private readonly UserControls.Save uc_save = new UserControls.Save();
+        private readonly UserControls.Edit uc_edit = new UserControls.Edit();
 
         public form_parent()
         {
@@ -162,7 +163,7 @@ namespace Accounts_manager
                 uc_main,
                 uc_blank,
                 uc_save,
-                //uc_edit,
+                uc_edit,
                 //uc_remove,
             };
 
@@ -194,11 +195,12 @@ namespace Accounts_manager
 
         private void Btn_edit_Click(object sender, EventArgs e)
         {
-            openChildForm(new form_edit());
+            ShowControl(uc_edit);
             SetSelectedButton(btn_edit);
+            uc_edit.LoadAccounts();
 
-            if (btn_selected != null && btn_selectedPrev != null)
-                Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
+            //if (btn_selected != null && btn_selectedPrev != null)
+            //    Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");
         }
 
         private void Btn_about_Click(object sender, EventArgs e)
