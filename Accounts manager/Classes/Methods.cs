@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Accounts_manager.Classes;
 using Accounts_manager.Classes.Models;
 using System.Windows.Forms;
+using ExcelDataReader;
 
 namespace Accounts_manager
 {
@@ -34,6 +35,58 @@ namespace Accounts_manager
 
         }
 
+        internal async virtual Task<List<T>> DataTableToList<T>(DataTable dataTable)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                T item = await GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
+
+        private async static Task<T> GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = await Task.Run(() => Activator.CreateInstance<T>());
+
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (System.Reflection.PropertyInfo pro in await Task.Run(() => temp.GetProperties()))
+                {
+                    if (pro.Name == column.ColumnName)
+                        await Task.Run(() => pro.SetValue(obj, dr[column.ColumnName], null));
+                    else
+                        continue;
+                }
+            }
+            return obj;
+        }
+
+        internal List<AccountModel> ImportFromXLSX()
+        {
+            //string FileLocation = PromptOpenFileDialog("xlsx", "Excel");
+            //using (var stream = File.Open(FileLocation, FileMode.Open, FileAccess.Read))
+            //using (var reader = ExcelReaderFactory.CreateReader(stream))
+            //{
+            //    DataTable data = reader.AsDataSet(new ExcelDataSetConfiguration()
+            //    {
+            //        ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+            //        {
+            //            UseHeaderRow = true
+            //        }
+            //    }).Tables[0];
+            //    return data;
+            //}
+
+            string FileLocation = PromptOpenFileDialog("csv", "Excel");
+            return File.ReadAllLines(FileLocation)
+                .Skip(1)
+                .Where(row => row.Length > 0)
+                .Select(AccountModel.ParseRow).ToList();
+        }
+
         internal async Task ExportToCSV(List<AccountModel> accounts)
         {
             DataTable accountsTable = await ListToDataTable(accounts);
@@ -41,6 +94,32 @@ namespace Accounts_manager
             string fileLocation = await PromptSaveFileDialog("Accounts.csv");
 
             await DataTableToCSV(accountsTable, fileLocation);
+        }
+
+        internal static string PromptOpenFileDialog(string FilterFilesExtention, string FilterFileName)
+        {
+            string RootDriveLetter = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
+
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                InitialDirectory = $@"{RootDriveLetter}Users\{Environment.UserName}\Desktop\",
+                Title = $"Browse {FilterFileName} Files",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                DefaultExt = $"{FilterFilesExtention}",
+                Filter = $"{FilterFileName} files (*.{FilterFilesExtention})| *.{FilterFilesExtention}|All files (*.*)|*.*",
+                FilterIndex = 1,
+                Multiselect = false,
+                RestoreDirectory = true,
+                ReadOnlyChecked = true,
+                ShowReadOnly = false,
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            }
+
+            return "";
         }
 
         internal async virtual Task<DataTable> ListToDataTable<T>(List<T> items)
@@ -138,7 +217,7 @@ namespace Accounts_manager
 
         #region security methods
 
-        
+
 
         #endregion
 

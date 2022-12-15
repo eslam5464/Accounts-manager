@@ -58,6 +58,7 @@ namespace Accounts_manager.UserControls
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -123,7 +124,7 @@ namespace Accounts_manager.UserControls
             this.lb_edit.Location = new System.Drawing.Point(3, 38);
             this.lb_edit.Name = "lb_edit";
             this.lb_edit.ScrollAlwaysVisible = true;
-            this.lb_edit.Size = new System.Drawing.Size(211, 154);
+            this.lb_edit.Size = new System.Drawing.Size(211, 94);
             this.lb_edit.TabIndex = 37;
             this.lb_edit.SelectedIndexChanged += new System.EventHandler(this.lb_edit_SelectedIndexChanged);
             // 
@@ -192,6 +193,7 @@ namespace Accounts_manager.UserControls
             this.tb_otherInfo.Location = new System.Drawing.Point(101, 3);
             this.tb_otherInfo.Multiline = true;
             this.tb_otherInfo.Name = "tb_otherInfo";
+            this.tb_otherInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tb_otherInfo.Size = new System.Drawing.Size(115, 114);
             this.tb_otherInfo.TabIndex = 54;
             // 
@@ -370,6 +372,7 @@ namespace Accounts_manager.UserControls
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_refresh);
             this.panel1.Controls.Add(this.lbl_viewBy);
             this.panel1.Controls.Add(this.cb_searchBy);
             this.panel1.Controls.Add(this.lb_edit);
@@ -441,6 +444,29 @@ namespace Accounts_manager.UserControls
             this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 400);
             this.tableLayoutPanel1.TabIndex = 43;
             // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_refresh.FlatAppearance.BorderSize = 0;
+            this.btn_refresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_refresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_refresh.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_refresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_refresh.Image = ((System.Drawing.Image)(resources.GetObject("btn_refresh.Image")));
+            this.btn_refresh.Location = new System.Drawing.Point(56, 145);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_refresh.Size = new System.Drawing.Size(100, 40);
+            this.btn_refresh.TabIndex = 40;
+            this.btn_refresh.Text = " Refresh";
+            this.btn_refresh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_refresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_refresh.UseVisualStyleBackColor = false;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,6 +475,7 @@ namespace Accounts_manager.UserControls
             this.MinimumSize = new System.Drawing.Size(448, 400);
             this.Name = "Edit";
             this.Size = new System.Drawing.Size(448, 400);
+            this.Load += new System.EventHandler(this.Edit_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -491,5 +518,6 @@ namespace Accounts_manager.UserControls
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }

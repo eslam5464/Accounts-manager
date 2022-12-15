@@ -73,7 +73,7 @@ namespace Accounts_manager.Classes
                 {
                     ClassName = "DataAccess",
                     LogLevel = Logger.ERROR,
-                    LogMessage = $"While adding and account & error: {ex.Message}",
+                    LogMessage = $"While adding an account & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }
@@ -134,6 +134,35 @@ namespace Accounts_manager.Classes
                     ClassName = "DataAccess",
                     LogLevel = Logger.ERROR,
                     LogMessage = $"While deleting account & error: {ex.Message}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
+            }
+        }
+
+        public static void DeleteAllAccounts()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("DELETE FROM Accounts");
+
+                    Logger.Log(new LogModel()
+                    {
+                        ClassName = "DataAccess",
+                        LogLevel = Logger.INFO,
+                        LogMessage = $"Deleted all accounts",
+                        MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(new LogModel()
+                {
+                    ClassName = "DataAccess",
+                    LogLevel = Logger.ERROR,
+                    LogMessage = $"While deleting all accounts & error: {ex.Message}",
                     MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
                 });
             }

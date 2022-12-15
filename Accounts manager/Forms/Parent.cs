@@ -171,9 +171,9 @@ namespace Accounts_manager
                 panel_childForm.Controls.Add(userControl);
 
             uc_blank.BringToFront();
-
-            form_dbPass frm = new form_dbPass();
-            frm.ShowDialog();
+            uc_blank.Dock = DockStyle.Fill;
+            //form_dbPass frm = new form_dbPass();
+            //frm.ShowDialog();
         }
 
         #endregion
@@ -184,7 +184,7 @@ namespace Accounts_manager
             ShowControl(uc_main);
             SetSelectedButton(btn_main);
 
-            uc_main.LoadAccounts();
+            //uc_main.LoadAccounts();
         }
 
         private void Btn_save_Click(object sender, EventArgs e)
@@ -193,11 +193,11 @@ namespace Accounts_manager
             SetSelectedButton(btn_save);
         }
 
-        private async void Btn_edit_Click(object sender, EventArgs e)
+        private void Btn_edit_Click(object sender, EventArgs e)
         {
             ShowControl(uc_edit);
             SetSelectedButton(btn_edit);
-            await uc_edit.LoadAccounts();
+            //await uc_edit.LoadAccounts();
 
             //if (btn_selected != null && btn_selectedPrev != null)
             //    Debug.WriteLine($"-> Selected: {btn_selected.Name}, prev: {btn_selectedPrev.Name}");

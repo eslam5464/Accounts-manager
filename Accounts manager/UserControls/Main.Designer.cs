@@ -57,6 +57,7 @@ namespace Accounts_manager.UserControls
             this.lb_main = new System.Windows.Forms.ListBox();
             this.lbl_viewBy = new System.Windows.Forms.Label();
             this.cb_searchBy = new System.Windows.Forms.ComboBox();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -77,8 +78,8 @@ namespace Accounts_manager.UserControls
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.68805F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.31195F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 400);
             this.tableLayoutPanel1.TabIndex = 41;
             // 
@@ -95,7 +96,7 @@ namespace Accounts_manager.UserControls
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(226, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(219, 188);
+            this.panel3.Size = new System.Drawing.Size(219, 222);
             this.panel3.TabIndex = 1;
             // 
             // tb_phone
@@ -210,9 +211,9 @@ namespace Accounts_manager.UserControls
             this.panel4.Controls.Add(this.tb_username);
             this.panel4.Controls.Add(this.lbl_siteName);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 197);
+            this.panel4.Location = new System.Drawing.Point(3, 231);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(217, 200);
+            this.panel4.Size = new System.Drawing.Size(217, 166);
             this.panel4.TabIndex = 2;
             // 
             // btn_copy_control_txt
@@ -245,7 +246,6 @@ namespace Accounts_manager.UserControls
             this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_password.Location = new System.Drawing.Point(104, 62);
             this.tb_password.Name = "tb_password";
-            this.tb_password.PasswordChar = '●';
             this.tb_password.ReadOnly = true;
             this.tb_password.Size = new System.Drawing.Size(110, 21);
             this.tb_password.TabIndex = 7;
@@ -343,9 +343,9 @@ namespace Accounts_manager.UserControls
             this.panel5.Controls.Add(this.lbl_other_info);
             this.panel5.Controls.Add(this.tb_otherInfo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(226, 197);
+            this.panel5.Location = new System.Drawing.Point(226, 231);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(219, 200);
+            this.panel5.Size = new System.Drawing.Size(219, 166);
             this.panel5.TabIndex = 3;
             // 
             // lbl_other_info
@@ -370,19 +370,21 @@ namespace Accounts_manager.UserControls
             this.tb_otherInfo.Multiline = true;
             this.tb_otherInfo.Name = "tb_otherInfo";
             this.tb_otherInfo.ReadOnly = true;
-            this.tb_otherInfo.Size = new System.Drawing.Size(96, 154);
+            this.tb_otherInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tb_otherInfo.Size = new System.Drawing.Size(96, 120);
             this.tb_otherInfo.TabIndex = 17;
             this.tb_otherInfo.Click += new System.EventHandler(this.Tbs_main_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_refresh);
             this.panel1.Controls.Add(this.lb_main);
             this.panel1.Controls.Add(this.lbl_viewBy);
             this.panel1.Controls.Add(this.cb_searchBy);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 188);
+            this.panel1.Size = new System.Drawing.Size(217, 222);
             this.panel1.TabIndex = 4;
             // 
             // lb_main
@@ -393,10 +395,10 @@ namespace Accounts_manager.UserControls
             this.lb_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_main.FormattingEnabled = true;
             this.lb_main.ItemHeight = 15;
-            this.lb_main.Location = new System.Drawing.Point(3, 50);
+            this.lb_main.Location = new System.Drawing.Point(9, 40);
             this.lb_main.Name = "lb_main";
             this.lb_main.ScrollAlwaysVisible = true;
-            this.lb_main.Size = new System.Drawing.Size(211, 124);
+            this.lb_main.Size = new System.Drawing.Size(205, 124);
             this.lb_main.TabIndex = 0;
             this.lb_main.SelectedIndexChanged += new System.EventHandler(this.lb_main_SelectedIndexChanged);
             // 
@@ -434,6 +436,29 @@ namespace Accounts_manager.UserControls
             this.cb_searchBy.TabIndex = 1;
             this.cb_searchBy.SelectedIndexChanged += new System.EventHandler(this.cb_searchBy_SelectedIndexChanged);
             // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_refresh.FlatAppearance.BorderSize = 0;
+            this.btn_refresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(42)))), ((int)(((byte)(101)))));
+            this.btn_refresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(63)))), ((int)(((byte)(152)))));
+            this.btn_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_refresh.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_refresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_refresh.Image = ((System.Drawing.Image)(resources.GetObject("btn_refresh.Image")));
+            this.btn_refresh.Location = new System.Drawing.Point(60, 170);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_refresh.Size = new System.Drawing.Size(100, 40);
+            this.btn_refresh.TabIndex = 37;
+            this.btn_refresh.Text = " Refresh";
+            this.btn_refresh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_refresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_refresh.UseVisualStyleBackColor = false;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,6 +467,7 @@ namespace Accounts_manager.UserControls
             this.MinimumSize = new System.Drawing.Size(448, 400);
             this.Name = "Main";
             this.Size = new System.Drawing.Size(448, 400);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -484,5 +510,6 @@ namespace Accounts_manager.UserControls
         private System.Windows.Forms.Label lbl_viewBy;
         private System.Windows.Forms.ComboBox cb_searchBy;
         private System.Windows.Forms.Button btn_copy_control_txt;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }

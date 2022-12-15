@@ -115,16 +115,36 @@ namespace Accounts_manager.UserControls
 
         internal async Task LoadAccounts()
         {
-            lb_edit.DataSource = null;
-            lb_edit.Items.Add("Please wait for the list to load...");
 
-            accounts = await Security.DecryptAccounts(DataAccess.GetAllAccounts());
+            btn_refresh.Enabled = false;
+            try
+            {
+                lb_edit.DataSource = null;
+                lb_edit.Items.Add("Please wait for the list to load...");
 
-            lb_edit.DataSource = accounts;
-            lb_edit.ValueMember = "Id";
-            lb_edit.DisplayMember = "SiteName";
+                accounts = await Security.DecryptAccounts(DataAccess.GetAllAccounts());
+                accounts = accounts.OrderBy(o => o.SiteName).ToList();
 
-            cb_searchBy.SelectedIndex = 0;
+                lb_edit.DataSource = accounts;
+                lb_edit.ValueMember = "Id";
+                lb_edit.DisplayMember = "SiteName";
+
+                cb_searchBy.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(new LogModel()
+                {
+                    ClassName = this.GetType().Name,
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"While loading accounts in edit & error: {ex.Message}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
+            }
+            finally
+            {
+                btn_refresh.Enabled = true;
+            }
         }
 
         private void PopulateTBs(AccountModel account)
@@ -169,6 +189,16 @@ namespace Accounts_manager.UserControls
                     });
                 }
 
+        }
+
+        private async void Edit_Load(object sender, EventArgs e)
+        {
+            await LoadAccounts();
+        }
+
+        private async void btn_refresh_Click(object sender, EventArgs e)
+        {
+            await LoadAccounts();
         }
     }
 }

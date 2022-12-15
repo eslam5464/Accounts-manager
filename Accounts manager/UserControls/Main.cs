@@ -45,18 +45,37 @@ namespace Accounts_manager.UserControls
             });
         }
 
-        public async void LoadAccounts()
+        public async Task LoadAccounts()
         {
-            lb_main.DataSource = null;
-            lb_main.Items.Add("Please wait for the list to load...");
+            btn_refresh.Enabled = false;
+            try
+            {
+                lb_main.DataSource = null;
+                lb_main.Items.Add("Please wait for the list to load...");
 
-            accounts = await Security.DecryptAccounts(DataAccess.GetAllAccounts());
+                accounts = await Security.DecryptAccounts(DataAccess.GetAllAccounts());
+                accounts = accounts.OrderBy(o => o.SiteName).ToList();
 
-            lb_main.DataSource = accounts;
-            lb_main.ValueMember = "Id";
-            lb_main.DisplayMember = "SiteName";
+                lb_main.DataSource = accounts;
+                lb_main.ValueMember = "Id";
+                lb_main.DisplayMember = "SiteName";
 
-            cb_searchBy.SelectedIndex = 0;
+                cb_searchBy.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(new LogModel()
+                {
+                    ClassName = this.GetType().Name,
+                    LogLevel = Logger.INFO,
+                    LogMessage = $"While loading accounts in main & error: {ex.Message}",
+                    MethodName = System.Reflection.MethodInfo.GetCurrentMethod().Name,
+                });
+            }
+            finally
+            {
+                btn_refresh.Enabled = true;
+            }
         }
 
         private void lb_main_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +135,16 @@ namespace Accounts_manager.UserControls
                 tb_username.Text = account.Username;
                 tb_dateCreated.Text = account.DateCreated;
             }
+        }
+
+        private async void btn_refresh_Click(object sender, EventArgs e)
+        {
+            await LoadAccounts();
+        }
+
+        private async void Main_Load(object sender, EventArgs e)
+        {
+            await LoadAccounts();
         }
 
         private void btn_copy_control_txt_Click(object sender, EventArgs e)
